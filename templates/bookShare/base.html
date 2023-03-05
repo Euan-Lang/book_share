@@ -4,6 +4,13 @@
     </head>
 
     <body>
+        {% if user.is_authenticated %}
+            Logged in as {{ user.username }}
+            <br />
+            <a href="{% url 'bookShare:logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'bookShare:login' %}">Login</a>
+        {% endif %}
         <!-- Add navigation and stuff here later -->
         {% block content %}
             Empty Page
