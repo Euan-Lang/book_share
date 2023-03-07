@@ -1,0 +1,20 @@
+{% extends 'bookShare/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Edit Profile
+{% endblock %}
+
+{% block content %}
+<h1> Edit Profile </h1>
+{% if user.is_authenticated and user.username == user_id %}
+    <form id="user_form" method="post" action="{% url 'bookShare:edit_profile' user.username %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+
+
+        <input type="submit" name="submit" value="Update" />
+    </form>
+{% endif %}
+
+{% endblock %}

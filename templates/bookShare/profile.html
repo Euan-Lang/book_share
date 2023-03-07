@@ -12,5 +12,8 @@
     Total Listings: {{profile.reputation}}
     <br/><br/>
     Joined Date: {{profile.joined_date}} <br/>
-    Following: {{following|length}}
+    Following: {{following|length}} <br/>
+    {% if user.username == profile.user.username %}
+        <a href = "{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
+    {% endif %}
 {% endblock %}
