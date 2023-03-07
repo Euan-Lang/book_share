@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('phone_number', models.CharField(max_length=11)),
                 ('joined_date', models.DateField(auto_now_add=True)),
                 ('reputation', models.IntegerField()),
-                ('user_image', models.ImageField(blank=True, null=True, upload_to=bookShare.models.renameUser)),
+                ('user_image', models.ImageField(blank=True, null=True, upload_to=bookShare.models.rename_user)),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
