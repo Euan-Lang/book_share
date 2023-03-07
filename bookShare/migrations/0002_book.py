@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('book_id', models.AutoField(primary_key=True, serialize=False)),
                 ('isbn', models.IntegerField(validators=[django.core.validators.MaxLengthValidator(13), django.core.validators.MinLengthValidator(13)])),
-                ('cover_image', models.ImageField(blank=True, null=True, upload_to=bookShare.models.renameBook)),
+                ('cover_image', models.ImageField(blank=True, null=True, upload_to=bookShare.models.rename_book)),
                 ('title', models.CharField(max_length=128)),
                 ('genre', models.CharField(max_length=128)),
                 ('upload_time', models.DateTimeField(auto_now_add=True)),
