@@ -1,0 +1,27 @@
+{% extends 'bookShare/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+<br/>
+<form id="user_search_form" method="post" action="{% url 'bookShare:user_search' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" id="username" name="username"><br>
+    <input type="submit" name="submit" value="Search" />
+</form>
+{% if results %}
+    Results:<br/>
+    <ul>
+        {% for result in results %}
+            <li>
+                <a href = "{% url 'bookShare:profile' result.username %}">{{result.username}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    No users found.
+{% endif %}
+{% endblock %}

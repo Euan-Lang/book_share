@@ -8,3 +8,4 @@ from .login import *
 from .profile import *
 from .register import *
 from .logout import *
+from .user_search import *

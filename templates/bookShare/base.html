@@ -1,16 +1,27 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/static/css/base.css">
         <title> BookShare - {% block title %}Page{% endblock %}</title>
     </head>
 
     <body>
-        {% if user.is_authenticated %}
-            Logged in as {{ user.username }}
-            <br />
-            <a href="{% url 'bookShare:logout' %}">Logout</a>
-        {% else %}
-            <a href="{% url 'bookShare:login' %}">Login</a>
-        {% endif %}
+
+        <ul id = "nav">
+            <li>
+                <a href = "{% url 'bookShare:browse' %}"> Browse </a>
+            </li>
+            <li> {% if user.is_authenticated %}
+                    Logged in as {{ user.username }}
+                    <br />
+                    <a href="{% url 'bookShare:logout' %}">Logout</a>
+                {% else %}
+                    <a href="{% url 'bookShare:login' %}">Login</a>
+                {% endif %}
+            </li> 
+            <li>
+                <a href = "{% url 'bookShare:user_search' %}">Search User</a>
+            </li>
+        </ul>
         <!-- Add navigation and stuff here later -->
         {% block content %}
             Empty Page
