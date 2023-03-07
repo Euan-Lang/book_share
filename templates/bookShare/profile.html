@@ -6,5 +6,11 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Profile Page for UID: {{ user_id }}</h1>
+    <h1>{{ profile.user.username }}</h1>
+    <img src="{{profile.user_image.url}}" height = 200px width = 200px> </img><br/>
+    Location: {{profile.location}} <br/>
+    Total Listings: {{profile.reputation}}
+    <br/><br/>
+    Joined Date: {{profile.joined_date}} <br/>
+    Following: {{following|length}}
 {% endblock %}
