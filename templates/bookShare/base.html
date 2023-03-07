@@ -11,8 +11,6 @@
                 <a href = "{% url 'bookShare:browse' %}"> Browse </a>
             </li>
             <li> {% if user.is_authenticated %}
-                    Logged in as {{ user.username }}
-                    <br />
                     <a href="{% url 'bookShare:logout' %}">Logout</a>
                 {% else %}
                     <a href="{% url 'bookShare:login' %}">Login</a>
