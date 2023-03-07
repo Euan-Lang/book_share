@@ -13,5 +13,6 @@ urlpatterns = [
     path('<str:genre>/<str:book_id>/edit/', views.edit_book, name='edit_book'),
     path('new_listing/', views.add_book, name='add_book'),
     path('search/', views.user_search, name = 'user_search'),
-    path('<str:user_id>/profile/edit', views.edit_profile, name="edit_profile")
+    path('<str:user_id>/profile/edit', views.edit_profile, name="edit_profile"),
+    path('<str:user_id>/follow', views.follow, name="follow")
 ]
