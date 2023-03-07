@@ -12,4 +12,5 @@ urlpatterns = [
     path('<str:genre>/<str:book_id>/', views.book_info, name='book_info'),
     path('<str:genre>/<str:book_id>/edit/', views.edit_book, name='edit_book'),
     path('new_listing/', views.add_book, name='add_book'),
+    path('search/', views.user_search, name = 'user_search')
 ]
