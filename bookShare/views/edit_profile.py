@@ -4,9 +4,11 @@ from django.contrib.auth.models import User
 from bookShare.models import UserProfile
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='bookShare:login')
 def edit_profile(request, user_id):
-    if not request.user.is_authenticated or request.user.username != user_id:
+    if request.user.username != user_id:
         return redirect(reverse('bookShare:browse')) # Not valid user
 
     profile = UserProfile.objects.get(user=request.user)

@@ -1,4 +1,5 @@
 import datetime
+from django.contrib.auth.models import User
 from bookShare.forms import UserForm, UserProfileForm
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -10,13 +11,13 @@ def register(request):
         return redirect(reverse('bookShare:browse')) # Already signed in.
     
     registered = False
-
+    invalid_username = False
 
     if request.method == 'POST':
         user_form = UserForm(request.POST)
         profile_form = UserProfileForm(request.POST)
-
-        if user_form.is_valid() and profile_form.is_valid():
+        invalid_username = User.objects.filter(username__iexact=request.POST["username"]).exists()
+        if user_form.is_valid() and profile_form.is_valid() and not invalid_username:
             user = user_form.save()
 
             user.set_password(user.password)
@@ -44,4 +45,5 @@ def register(request):
         'bookShare/register.html',
         context = {'user_form': user_form,
         'profile_form': profile_form,
-        'registered': registered})
+        'registered': registered,
+        'username_exists':invalid_username})

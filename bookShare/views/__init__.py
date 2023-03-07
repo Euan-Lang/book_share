@@ -10,3 +10,4 @@ from .register import *
 from .logout import *
 from .user_search import *
 from .edit_profile import *
+from .follow import *
