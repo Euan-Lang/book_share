@@ -17,6 +17,10 @@
     {% if user.username == profile.user.username %}
         <a href = "{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
     {% elif user.is_authenticated %}
-        <a href = "{% url 'bookShare:follow' profile.user.username %}"> Follow </a>
+        {%  if is_following %}
+            <a href = "{% url 'bookShare:unfollow' profile.user.username %}"> Unfollow </a>
+        {% else %}
+            <a href = "{% url 'bookShare:follow' profile.user.username %}"> Follow </a>
+        {% endif %}
     {% endif %}
 {% endblock %}
