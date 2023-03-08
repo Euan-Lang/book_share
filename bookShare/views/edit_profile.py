@@ -21,7 +21,7 @@ def edit_profile(request, user_id):
             
 
             if 'user_image' in request.FILES:
-                profile.user_image.delete()
+                profile.user_image.delete(save=True)
                 profile.user_image = request.FILES['user_image']
             else:
                 profile_form.user_image = profile.user_image
