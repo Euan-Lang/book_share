@@ -14,6 +14,7 @@ def profile(request, user_id):
 
         context["following"] = Follows.objects.filter(follower = user_profile)
         context["followers"] = Follows.objects.filter(following=user_profile)
+        context["is_following"] = context["followers"].filter(follower=UserProfile.objects.get(user=request.user))
 
     except :
         return redirect(reverse('bookShare:browse'))
