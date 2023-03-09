@@ -35,6 +35,9 @@ class Follows(models.Model):
     follow_id = models.AutoField(primary_key=True)
     follower = models.ForeignKey(UserProfile, null=True,blank=True,on_delete=models.CASCADE,related_name="follower")
     following = models.ForeignKey(UserProfile,null=True,blank=True,on_delete=models.CASCADE,related_name="following")
+
+    def __str__(self):
+        return self.follower.user.username + " -> " + self.following.user.username
     
     
 class Book(models.Model):
