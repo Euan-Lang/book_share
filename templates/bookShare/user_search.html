@@ -17,7 +17,7 @@
     <ul>
         {% for result in results %}
             <li>
-                <a href = "{% url 'bookShare:profile' result.username %}">{{result.username}}</a>
+                <a href = "{% url 'bookShare:profile' result.user.username %}">{{result.user.username}}</a>
             </li>
         {% endfor %}
     </ul>
