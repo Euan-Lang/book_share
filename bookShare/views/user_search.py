@@ -10,7 +10,7 @@ def user_search(request):
     if request.method == "POST": 
         username = request.POST["username"]
         if not username == "":
-            context["results"] = User.objects.filter(username__icontains=username)
+            context["results"] = UserProfile.objects.filter(user__in=User.objects.filter(username__icontains=username))
 
 
     return render(request,'bookShare/user_search.html', context=context)
