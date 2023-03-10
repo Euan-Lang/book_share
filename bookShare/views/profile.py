@@ -7,16 +7,16 @@ from django.urls import reverse
 def profile(request, user_id):
     context = {}
 
-    try:
-        user = User.objects.get(username = user_id)
-        user_profile = UserProfile.objects.get(user = user)
-        context["profile"] = user_profile
+    # try:
+    user = User.objects.get(username = user_id)
+    user_profile = UserProfile.objects.get(user = user)
+    context["profile"] = user_profile
 
-        context["following"] = Follows.objects.filter(follower = user_profile)
-        context["followers"] = Follows.objects.filter(following=user_profile)
-        context["is_following"] = context["followers"].filter(follower=UserProfile.objects.get(user=request.user))
+    context["following"] = Follows.objects.filter(follower = user_profile)
+    context["followers"] = Follows.objects.filter(following=user_profile)
+    context["is_following"] = context["followers"].filter(follower=UserProfile.objects.get(user=request.user))
 
-    except :
-        return redirect(reverse('bookShare:browse'))
+    # except :
+        # return redirect(reverse('bookShare:browse'))
 
     return render(request,'bookShare/profile.html', context=context)
