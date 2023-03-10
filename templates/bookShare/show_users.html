@@ -1,0 +1,23 @@
+{% extends 'bookShare/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{display_name}}
+{% endblock %}
+
+{% block content %}
+<br/>
+
+{{display_name}}
+{% if results %}<br/>
+    <ul>
+        {% for result in results %}
+            <li>
+                <a href = "{% url 'bookShare:profile' result.user.username %}">{{result.user.username}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    No users found.
+{% endif %}
+{% endblock %}
