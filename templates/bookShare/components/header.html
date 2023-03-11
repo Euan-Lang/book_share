@@ -22,7 +22,7 @@
               <a href="{% url 'bookShare:login' %}">Login</a>
             {% endif %}
             {% if user.is_authenticated %}
-              {% include "bookShare/components/button.html" with label="Profile" url="bookShare:profile" %}
+              {% include "bookShare/components/button.html" with label="Profile" url="bookShare:profile" ctxt=user.username %}
 
             {% else %}
               {% include "bookShare/components/button.html" with label="Sign up" url="bookShare:register" %}
