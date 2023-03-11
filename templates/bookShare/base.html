@@ -5,22 +5,16 @@
     </head>
 
     <body>
-
         <ul id = "nav">
-            <li>
-                <a href = "{% url 'bookShare:browse' %}"> Browse </a>
-            </li>
-            <li> {% if user.is_authenticated %}
-                    <a href="{% url 'bookShare:logout' %}">Logout</a>
+            {% for item in nav_items %}
+                {% if item.context %}
+                    <li> <a href = "{% url item.url item.context %}"> {{item.name}} </a></li>
                 {% else %}
-                    <a href="{% url 'bookShare:login' %}">Login</a>
+                    <li> <a href = "{% url item.url %}"> {{item.name}} </a></li>
                 {% endif %}
-            </li> 
-            <li>
-                <a href = "{% url 'bookShare:user_search' %}">Search User</a>
-            </li>
+            {% endfor %}
         </ul>
-        <!-- Add navigation and stuff here later -->
+
         {% block content %}
             Empty Page
         {% endblock %}
