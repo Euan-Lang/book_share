@@ -1,1 +1,5 @@
+{% if ctxt %}
+<a class="btn-primary" href="{% url url ctxt %}">{{ label }}</a>
+{% else %}
 <a class="btn-primary" href="{% url url %}">{{ label }}</a>
+{% endif %}
