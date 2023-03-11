@@ -1,25 +1,21 @@
 {% extends 'bookShare/base.html' %}
-{% load staticfiles %}
 
-{% block title %}
-Login
-{% endblock %}
-
+{% block title %}Login{% endblock %}
 {% block content %}
-<h1> Login </h1>
-
-<form id="user_form" method="post" action="{% url 'bookShare:login' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    Username: <input type="text" name="username" value="" size="50" />
-    <br />
-    Password: <input type="password" name="password" value="" size="128" />
-    <br />
-
-    <input type="submit" name="submit" />
-</form>
-
-<h4> Don't have an account? </h4>
-<a href = "{% url 'bookShare:register' %}"> Register </a>
-
+    <h1 class="bg-red-100 p-5">Login Test2</h1>
+    <form id="user_form"
+          method="post"
+          action="{% url 'bookShare:login' %}"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        Username:
+        <input type="text" name="username" value="" size="50" />
+        <br />
+        Password:
+        <input type="password" name="password" value="" size="128" />
+        <br />
+        <input type="submit" name="submit" />
+    </form>
+    <h4>Don't have an account?</h4>
+    <a href="{% url 'bookShare:register' %}">Register</a>
 {% endblock %}
