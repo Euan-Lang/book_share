@@ -1,25 +1,25 @@
 {% extends 'bookShare/base.html' %}
-{% load staticfiles %}
 
-{% block title %}
-Login
-{% endblock %}
-
+{% block title %}Login{% endblock %}
 {% block content %}
-<h1> Login </h1>
+    <div class="flex justify-center items-center w-full">
+        <div class="w-5/12 shadow-lg rounded-xl p-11 my-5">
+            <h1 class="text-5xl font-semibold text-black mb-11 text-center">Login</h1>
+            <form id="user_form"
+                  method="post"
+                  action="{% url 'bookShare:login' %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="flex flex-col gap-4 mb-6">
+                    {% include "bookShare/components/input.html" with type="text" name="username" label="Email" required=True placeholder="you@example.com" %}
+                    {% include "bookShare/components/input.html" with type="password" name="password" label="Password" required=True placeholder="*******" %}
 
-<form id="user_form" method="post" action="{% url 'bookShare:login' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-
-    Username: <input type="text" name="username" value="" size="50" />
-    <br />
-    Password: <input type="password" name="password" value="" size="128" />
-    <br />
-
-    <input type="submit" name="submit" />
-</form>
-
-<h4> Don't have an account? </h4>
-<a href = "{% url 'bookShare:register' %}"> Register </a>
-
+                </div>
+                <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
+            </form>
+            <span class="inline">Don't have an account?</span>
+            <a class="inline font-semibold text-blue hover:text-blue-900"
+               href="{% url 'bookShare:register' %}">Register here</a>
+        </div>
+    </div>
 {% endblock %}

@@ -1,23 +1,25 @@
-<html>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" href="/static/css/base.css">
-        <title> BookShare - {% block title %}Page{% endblock %}</title>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap"
+              rel="stylesheet"/>
+        <link href="{% static 'css/build.css' %}" rel="stylesheet"/>
+        <title> BookShare -
+            {% block title %}Page{% endblock %}
+        </title>
     </head>
+    <body class="w-full">
+        {% include "bookShare/components/header.html" %}
 
-    <body>
-        <ul id = "nav">
-            {% for item in nav_items %}
-                {% if item.context %}
-                    <li> <a href = "{% url item.url item.context %}"> {{item.name}} </a></li>
-                {% else %}
-                    <li> <a href = "{% url item.url %}"> {{item.name}} </a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-
-        {% block content %}
-            Empty Page
-        {% endblock %}
+        <main class="container">
+            {% block content %}Empty Page{% endblock %}
+        </main>
     </body>
-
 </html>
