@@ -9,15 +9,11 @@
     </a>
     <nav class="flex items-center">
       <ul class="flex items-center gap-10 text-xl text-black">
-        <li>
-          <a href="{% url 'bookShare:browse' %}">Browse</a>
-        </li>
-        <li>
-          <a href="{% url 'bookShare:add_book' %}">Add Listing</a>
-        </li>
-        <li>
-          <a href = "{% url 'bookShare:user_search' %}">Search User</a>
-        </li>
+        {% for item in left_nav_items %}
+          <li>
+            <a href="{% url item.url %}">{{ item.name }}</a>
+          </li>
+        {% endfor %}
         <li class=" border-l-[1px] border-gray">
           <div class="pl-10 flex items-center gap-5">
             {% if user.is_authenticated %}
