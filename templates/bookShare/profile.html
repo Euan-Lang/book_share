@@ -20,7 +20,7 @@
     <a href = "{% url 'bookShare:followers' profile.user.username %}"> Followers: {{followers|length}} </a> <br/>
     {% if user.username == profile.user.username %}
         <a href = "{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
-    {% elif user.is_authenticated %}
+    {% elif user.is_authenticated and is_following != "invalid" %}
         {%  if is_following %}
             <a href = "{% url 'bookShare:unfollow' profile.user.username %}"> Unfollow </a>
         {% else %}
