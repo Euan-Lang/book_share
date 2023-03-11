@@ -2,7 +2,8 @@
 
 ### Setup
 
-To enable a live reload process for both the html templates and any css/js files, you will need to setup the following:
+To see any style-related changes in the browser, such as adding classes, writing stylesheet declarations, you will need to setup a **Tailwind** compile process. Please see details below.
+If you additionally want to enable live reload for any changes made to files in the `static` directory, please also follow the steps in the **Livereload** section below.
 
 #### Tailwind
 
@@ -11,8 +12,8 @@ This project uses CSS framework [Tailwind](https://tailwindcss.com/). Rather tha
 **Steps**
 
 1. Navigate to the project root, open a terminal from there and run `cd static/css/tailwind`
-2. `npm install` If you haven't npm installed on your device, please download and install nodejs on your device from [here](https://nodejs.org/en/download/)
-3. `npm run build:css`
+2. Next, run `npm install` If you haven't npm installed on your device, please download and install nodejs on your device from [here](https://nodejs.org/en/download/)
+3. Finally, `npm run build:css` This will start a Tailwind watch process that automatically outputs an updated CSS bundle file when you make any style-related changes.
 
 #### Livereload
 
