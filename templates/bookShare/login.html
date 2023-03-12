@@ -11,7 +11,7 @@
                   enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="flex flex-col gap-4 mb-6">
-                    {% include "bookShare/components/input.html" with type="text" name="username" label="Email" required=True placeholder="you@example.com" %}
+                    {% include "bookShare/components/input.html" with type="text" name="username" label="Username" required=True placeholder="username123" %}
                     {% include "bookShare/components/input.html" with type="password" name="password" label="Password" required=True placeholder="*******" %}
 
                 </div>
