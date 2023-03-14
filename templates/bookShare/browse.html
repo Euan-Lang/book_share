@@ -7,4 +7,16 @@
 
 {% block content %}
     <h1>Browse</h1>
+    {% if books %}
+    Books:<br/>
+     <ul>
+        {% for book in books %}
+            <li>
+                <a href = "{% url 'bookShare:book_info' book.book_id %}">{{book.title}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    No books.
+{% endif %}
 {% endblock %}
