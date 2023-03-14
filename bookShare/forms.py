@@ -35,7 +35,7 @@ class BookForm(forms.ModelForm):
     publisher = forms.CharField(label="Publisher",widget=forms.TextInput(attrs={"placeholder": "Bloomsbury"}))
     author = forms.CharField(label="Author",widget=forms.TextInput(attrs={"placeholder": "JK Rowling"}))
     isbn = forms.CharField(label="ISBN",widget=forms.TextInput(attrs={"placeholder": "9780747532743"}))
-    cover_image = forms.ImageField(label="Cover Image")
+    cover_image = forms.ImageField(label="Cover Image",required=False)
     genre = forms.CharField(label="Genre",widget=forms.TextInput(attrs={"placeholder": "Fantasy"}))
 
     class Meta:
