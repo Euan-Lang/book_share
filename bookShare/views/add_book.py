@@ -18,7 +18,7 @@ def add_book(request):
             book.user_profile = user_profile
             if "cover_image" in request.FILES:
                 book.cover_image = request.Files['cover_image']
-            book.upload_time = datetime.datetime.utcnow
+            book.upload_time = datetime.datetime.now
             book.is_reserved = False
             book.save()
             added =True

@@ -19,7 +19,7 @@
                     {% include "bookShare/components/input.html" with type="text" name="publisher" label="Publisher" required=True placeholder="Bloomsbury" %}
                     {% include "bookShare/components/input.html" with type="text" name="author" label="Author" required=True placeholder="JK,Rowling" %}
                     {% include "bookShare/components/input.html" with type="text" name="isbn" label="ISBN" required=True placeholder="9780747532743" %}
-                    {% include "bookShare/components/input.html" with type="image" name="cover_image" label="Cover Image" required=True placeholder="" %}
+                    {% include "bookShare/components/input.html" with type="image" name="cover_image" label="Cover Image" required=False placeholder="" %}
                     {% include "bookShare/components/input.html" with type="text" name="genre" label="Genre" required=True placeholder="Fantasy" %}
                 </div>
                 <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
