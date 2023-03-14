@@ -8,7 +8,7 @@
 {% block content %}
     <div class="flex justify-center items-center w-full">
         <div class="w-5/12 shadow-lg rounded-xl p-11 my-5">
-            <h1 class="text-5xl font-semibold text-black mb-11 text-center">Login</h1>
+            <h1 class="text-5xl font-semibold text-black mb-11 text-center">Add Book</h1>
             <form id="book_form"
                   method="post"
                   action="{% url 'bookShare:add_book' %}"
@@ -19,7 +19,7 @@
                     {% include "bookShare/components/input.html" with type="text" name="publisher" label="Publisher" required=True placeholder="Bloomsbury" %}
                     {% include "bookShare/components/input.html" with type="text" name="author" label="Author" required=True placeholder="JK,Rowling" %}
                     {% include "bookShare/components/input.html" with type="text" name="isbn" label="ISBN" required=True placeholder="9780747532743" %}
-                    {% include "bookShare/components/input.html" with type="image" name="cover_image" label="Cover Image" required=False placeholder="" %}
+                    {% include "bookShare/components/input.html" with type="File" name="cover_image" label="Cover Image" required=False placeholder="" %}
                     {% include "bookShare/components/input.html" with type="text" name="genre" label="Genre" required=True placeholder="Fantasy" %}
                 </div>
                 <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
