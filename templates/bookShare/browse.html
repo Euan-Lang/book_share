@@ -7,4 +7,18 @@
 
 {% block content %}
     <h1>Browse</h1>
+    {% if books %}
+    Books:<br/>
+     <ul>
+        {% for book in books %}
+            {% if book.is_reserved == False %}
+                <li>
+                    <a href = "{% url 'bookShare:book_info' book.book_id %}">{{book.title}}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% else %}
+    No books.
+{% endif %}
 {% endblock %}
