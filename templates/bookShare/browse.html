@@ -11,9 +11,11 @@
     Books:<br/>
      <ul>
         {% for book in books %}
-            <li>
-                <a href = "{% url 'bookShare:book_info' book.book_id %}">{{book.title}}</a>
-            </li>
+            {% if book.is_reserved == False %}
+                <li>
+                    <a href = "{% url 'bookShare:book_info' book.book_id %}">{{book.title}}</a>
+                </li>
+            {% endif %}
         {% endfor %}
     </ul>
 {% else %}
