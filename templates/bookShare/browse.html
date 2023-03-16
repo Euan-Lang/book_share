@@ -6,5 +6,48 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Browse</h1>
+<section id="search_box_wrapper">
+    <div id="search_box">
+        <form id="book_search_form" method="post" action="{% url 'bookShare:browse' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="submit" name="submit" value="Search">
+            <input type="text" id="query_text_field" name="query_text">
+        </form>
+    </div>
+</section>
+<section id="main">
+    <div id="search_sidebar">
+
+    </div>
+    <div id="results_pane">
+        {% if books %}
+            {% for result in results %}
+                <div class="book_result">
+                    <div class="genre_bar">
+                        <p class="genre">{{ result.genre }}</p>
+                    </div>
+                    {% if result.cover_image %}
+                        <img class="result_image" src="{{ result.cover_image.url }}" alt="{{ result.title}} by {{ result.author }}" height = 400px width = 400px/><br/>
+                    {% else %}
+                        <img src="{% static 'images/default_book.jpg' %}" alt="{{ result.title}} by {{ result.author }}" height = 400px width = 300px /><br/>
+                    {% endif %}
+                    
+                    <h2>{{ result.title }}</h2><br/>
+                    <h4>{{ result.author }}</h4><br/>
+
+                    <div class="user_info_bar">
+                        <p>Listed {{ result.upload_time }}</p>
+                        {% if result.user_profile.user_image %}
+                            <img src="{{result.user_profile.user_image.url}}" height = 50px width = 50px />
+                        {% else %}
+                            <img src="{% static 'images/default_pfp.jpg' %}" height = 50px width = 50px />
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            No results found.
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
