@@ -1,5 +1,14 @@
-certifi @ file:///C:/b/abs_85o_6fm0se/croot/certifi_1671487778835/work/certifi
+beautifulsoup4==4.11.2
+certifi==2022.12.7
 Django==2.2.28
+django-livereload-server==0.4
+Pillow==9.4.0
+pip==23.0.1
 pytz==2022.7.1
+setuptools==65.6.3
+six==1.16.0
+soupsieve==2.4
 sqlparse==0.4.3
+tornado==6.2
+wheel==0.38.4
 wincertstore==0.2
