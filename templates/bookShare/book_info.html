@@ -10,7 +10,7 @@
     {% if book.cover_image %}
         <img src="{{book.cover_image.url}}" height = 200px width = 200px> </img><br/>
     {% else %}
-        <img src="{% static 'images/default_pfp.jpg' %}" height = 200px width = 200px> </img><br/>
+        <img src="{% static 'images/default_book.jpg' %}" height = 200px width = 200px> </img><br/>
     {% endif %}
     Author: {{book.author}}<br/>
     Publisher: {{book.publisher}}<br/>
