@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from bookShare.models import UserProfile
-from django.shortcuts import redirect
-from django.urls import reverse
 
 def user_search(request):
     context = {}
