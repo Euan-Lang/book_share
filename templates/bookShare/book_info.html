@@ -1,4 +1,24 @@
 {% extends 'bookShare/base.html' %}
 {% load staticfiles %}
-{% block title %}Book Info{% endblock %}
-{% block content %}<h1>Book info page</h1>{% endblock %}
+
+{% block title %}
+    Book Info
+{% endblock %}
+
+{% block content %}
+    <h1>{{ book.title }}</h1>
+    {% if book.cover_image %}
+        <img src="{{book.cover_image.url}}" height = 200px width = 200px> </img><br/>
+    {% else %}
+        <img src="{% static 'images/default_pfp.jpg' %}" height = 200px width = 200px> </img><br/>
+    {% endif %}
+    Author: {{book.author}}<br/>
+    Publisher: {{book.publisher}}<br/>
+    ISBN: {{book.isbn}}<br/>
+    Genre: {{book.genre}}<br/>
+    Uploaded: {{book.upload_time}}<br/><br/>
+   
+    {% if user.username == book.user_profile %}
+        <a href = "{% url 'bookShare:edit_book'%}"> Edit </a>
+    {% endif %}
+{% endblock %}
