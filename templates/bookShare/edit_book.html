@@ -6,5 +6,21 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Edit Book</h1>
+<div class="flex justify-center items-center w-full">
+    <div class="w-5/12 shadow-lg rounded-xl p-11 my-5">
+         <h1 class="text-5xl font-semibold text-black mb-11 text-center">Edit Book</h1>
+            {% if user.is_authenticated and user.username == book_user_id %}
+        <form id="bookForm" method="post" action="{% url 'bookShare:edit_book' book_id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="flex flex-col gap-4 mb-6">
+                    {% for item in bookForm %}
+                        <label class="block">
+                            <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
+                            <input type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" />
+                            {% if item.help_text %}<p class="help text-sm">{{ item.help_text|safe }}</p>{% endif %}
+                        </label>
+                    {% endfor %}
+            <input type="submit" class="btn-primary mb-6" name="submit" value="Update" />
+        </form>
+{% endif %}
 {% endblock %}
