@@ -15,3 +15,4 @@ from .unfollow import *
 from .user_search import *
 from .intrest import *
 from .add_intrest import *
+from .remove_intrest import *

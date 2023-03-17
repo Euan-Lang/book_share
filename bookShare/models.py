@@ -62,7 +62,7 @@ class Book(models.Model):
     
 class Intrest(models.Model):
     intrest_id = models.AutoField(primary_key=True)
-    book_id = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
 
     def __str__(self):
