@@ -72,7 +72,7 @@ def populate():
          "genre":"fantasy",
          "img_name":"IMG_20230316_210130.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Jim",
          "publisher":"Award Publications",
          "author":"Jules Verne",
          "isbn":"9781782700432",
@@ -80,7 +80,7 @@ def populate():
          "genre":"fantasy",
          "img_name":"IMG_20230316_210144.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Lindsey",
          "publisher":"Puffin Books",
          "author":"Maurice Gee",
          "isbn":"9780143305019",
@@ -88,7 +88,7 @@ def populate():
          "genre":"fantasy",
          "img_name":"IMG_20230316_210159.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Andrew",
          "publisher":"Floris Books",
          "author":"Kathleen Fidler",
          "isbn":"9780863158827",
@@ -104,7 +104,7 @@ def populate():
          "genre":"comedy",
          "img_name":"IMG_20230316_210302.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"testuser2",
          "publisher":"Quirk Books",
          "author":"Ian Doescher",
          "isbn":"9781594747151",
@@ -112,7 +112,7 @@ def populate():
          "genre":"science fiction",
          "img_name":"IMG_20230316_210344.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Jim",
          "publisher":"Pan Macmillan",
          "author":"George Orwell",
          "isbn":"9781529032666",
@@ -120,7 +120,7 @@ def populate():
          "genre":"dystopian",
          "img_name":"IMG_20230316_210359.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Lindsey",
          "publisher":"Quercus Editions",
          "author":"Paul Glendinning",
          "isbn":"9781780873695",
@@ -128,7 +128,7 @@ def populate():
          "genre":"mathematics",
          "img_name":"IMG_20230316_210422.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Andrew",
          "publisher":"Bloomsbury Publishing",
          "author":"Peter Holden and Tim Cleeves",
          "isbn":"9781472906472",
@@ -144,7 +144,7 @@ def populate():
          "genre":"geography",
          "img_name":"IMG_20230316_210507.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"testuser2",
          "publisher":"British Geological Survey",
          "author":"British Geological Survey",
          "isbn":"9780751835021",
@@ -152,7 +152,7 @@ def populate():
          "genre":"geography",
          "img_name":"IMG_20230316_220915.jpg"
         },
-        {"user_name":"testuser1",
+        {"user_name":"Jim",
          "publisher":"Whitcombe and Tombs Limited",
          "author":"C.A. Cotton",
          "isbn":"",
