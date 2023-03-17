@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 def add_intrest(request,book_id):
     book = Book.objects.get(book_id=book_id)
     if request.user.username != book.user_profile.user.username:
-        user_profile = UserProfile.objects.get(request.user)
+        user_profile = UserProfile.objects.get(user = request.user)
         if not Intrest.objects.filter(book_id=book_id,user_profile=user_profile).exists():
             Intrest.objects.create(book_id=book_id,user_profile=user_profile)
     
