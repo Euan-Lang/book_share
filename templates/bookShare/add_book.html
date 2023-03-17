@@ -24,10 +24,12 @@
                 </div>
                 <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
             </form>
-            {% if added %}
-                <h3>Book added!</h3>
-            {% else %}
-                <h3>Error Book not added.</h3>
+            {% if submitted %}
+                {% if added %}
+                    <h3>Book added!</h3>
+                {% else %}
+                    <h3>Error Book not added.</h3>
+                {% endif %}
             {% endif %}
         </div>
     </div>
