@@ -7,6 +7,7 @@ from bookShare.models import Book, UserProfile
 @login_required(login_url="bookShare:login")
 def add_book(request):
     added = False
+    submitted = False
     if request.method == 'POST':
         
 
@@ -22,10 +23,13 @@ def add_book(request):
             book.is_reserved = False
             book.save()
             added =True
+            
         else:
             print(book_form.errors)
-
+        
+        submitted =True
+        
     else:
         book_form = BookForm()
     
-    return render(request,'bookShare/add_book.html', context={'book_form': book_form,'added':added})
+    return render(request,'bookShare/add_book.html', context={'book_form': book_form,'added':added,'submitted':submitted})
