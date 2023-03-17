@@ -40,17 +40,6 @@
                     
                     <h2><a href = "{% url 'bookShare:book_info' result.book_id %}">{{ result.title }}</a></h2><br/>
                     <h4>{{ result.author }}</h4><br/>
-
-                    <div class = "user_info_bar">
-                        <p>Listed {{ result.upload_time|date:"d/m/Y" }}</p>
-                        <a href = "{% url 'bookShare:profile' result.user_profile.user.username %}">
-                        {% if result.user_profile.user_image %}
-                            <img src = "{{result.user_profile.user_image.url}}" alt = "{{result.user_profile.user.username}}" height = 50px width = 50px />
-                        {% else %}
-                            <img src = "{% static 'images/default_pfp.jpg' %}" alt = "{{result.user_profile.user.username}}" height = 50px width = 50px />
-                        {% endif %}
-                        </a>
-                    </div>
                 </div>
             {% endfor %}
         {% else %}

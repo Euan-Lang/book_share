@@ -46,10 +46,10 @@ class Follows(models.Model):
 
 class Book(models.Model):
     book_id = models.AutoField(primary_key=True)
-    user_profile = models.OneToOneField(UserProfile, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     publisher = models.CharField(max_length=128)
     author = models.CharField(max_length=128)
-    isbn = models.IntegerField()
+    isbn = models.IntegerField(null=True)
     cover_image = models.ImageField(
         upload_to=rename_book, null=True, blank=True)
     title = models.CharField(max_length=128)
