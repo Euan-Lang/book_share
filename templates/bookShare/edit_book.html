@@ -6,5 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Edit Book</h1>
+<div class="flex justify-center items-center w-full">
+    <div class="w-5/12 shadow-lg rounded-xl p-11 my-5">
+         <h1 class="text-5xl font-semibold text-black mb-11 text-center">Edit Book</h1>
+            {% if user.is_authenticated and user.username == book_user_id %}
+        <form id="bookForm" method="post" action="{% url 'bookShare:edit_book' book_id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ bookForm.as_p }}
+
+
+            <input type="submit" name="submit" value="Update" />
+        </form>
+{% endif %}
 {% endblock %}
