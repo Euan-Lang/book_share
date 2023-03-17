@@ -23,10 +23,12 @@ def add_book(request):
             book.is_reserved = False
             book.save()
             added =True
-            submitted =True
+            
         else:
             print(book_form.errors)
-
+        
+        submitted =True
+        
     else:
         book_form = BookForm()
     
