@@ -16,7 +16,7 @@
     Publisher: {{book.publisher}}<br/>
     ISBN: {{book.isbn}}<br/>
     Genre: {{book.genre}}<br/>
-    Uploaded: {{book.upload_time}}<br/><br/>
+    Uploaded: {{book.upload_time}} by <a href = "{% url 'bookShare:profile' book.user_profile.user.username %}">{{book.user_profile.user.username}}</a><br/><br/>
    
     {% if user.username == book.user_profile %}
         <a href = "{% url 'bookShare:edit_book'%}"> Edit </a>
