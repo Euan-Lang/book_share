@@ -13,4 +13,5 @@ def interested(request,book_id):
         context['interested'] = str(len(context['results']))
         return render(request,'bookShare/interest.html', context=context)
     else:
+
         return redirect(reverse('bookShare:book_info', kwargs={'book_id':book.book_id}))
