@@ -1,0 +1,41 @@
+<footer class="container bg-gray text-black">
+  <div class="flex gap-5 py-10 flex-col sm:flex-row sm:w-8/12">
+    <div class="sm:w-2/4">
+      <h3 class="text-3xl font-semibold mb-5 sm:leading-[80px]">BookShare</h3>
+      <p class="max-w-[90%]">
+        Discover a world of books with Bookshare. Whether you're looking for the latest bestsellers or timeless classics our app makes it easy to find your next favorite book. Join today and discover new books for free.
+      </p>
+    </div>
+    <div class="sm:w-1/4">
+      <h3 class="text-3xl font-semibold mb-5 sm:leading-[80px]">Menu</h3>
+      <ul class="flex flex-col gap-3">
+        <li>
+          <a href="{% url 'bookShare:browse' %}">Browse</a>
+        </li>
+        <li>
+          <a href="{% url 'bookShare:login' %}">Login</a>
+        </li>
+        <li>
+          <a href="{% url 'bookShare:register' %}">Register</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="text-3xl font-semibold mb-5 sm:leading-[80px]">Socials</h3>
+      <ul class="flex flex-col gap-3">
+        <li>
+          <a href="#">LinkedIn</a>
+        </li>
+        <li>
+          <a href="#">Facebook</a>
+        </li>
+        <li>
+          <a href="#">Instagram</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>© {% now "Y" %} - BookShare</p>
+  </div>
+</footer>

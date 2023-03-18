@@ -1,9 +1,6 @@
 {% extends 'bookShare/base.html' %}
-{% load staticfiles %}
 
-{% block title %}
-    Profile
-{% endblock %}
+{% load staticfiles %}
 
 {% block javascript %}
 <script>
@@ -36,4 +33,5 @@
             <a href = "{% url 'bookShare:follow' profile.user.username %}"> Follow </a>
         {% endif %} {% endcomment %}
     {% endif %}
+{% endif %}
 {% endblock %}

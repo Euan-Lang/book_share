@@ -4,44 +4,43 @@
 
 {% block title %}Register{% endblock %}
 {% block content %}
-    <div class="flex justify-center items-center w-full">
-        <div class="max-w-[650px] lg:w-[500px] shadow-lg rounded-xl p-11 my-5">
-            <h1 class="text-5xl font-semibold text-black mb-11 text-center">Register</h1>
-            <form id="user_form"
-                  method="post"
-                  action="{% url 'bookShare:register' %}"
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="flex flex-col gap-4 mb-6">
-                    {% for item in user_form %}
-                        <label class="block">
-                            <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
-                            <input type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" />
-                            {% if item.help_text %}<p class="help text-sm">{{ item.help_text|safe }}</p>{% endif %}
-                        </label>
-                    {% endfor %}
-                    {% for item in profile_form %}
-                        <label class="block">
-                            <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
-                            <input type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" maxlength="{{ item.field.widget.attrs.maxlength|default:"64" }}"/>
-                        </label>
-                        {% if item.help_text %}<p class="help">{{ item.help_text|safe }}</p>{% endif %}
-                    {% endfor %}
-                </div>
-                <input role="button"
-                       class="btn-primary mb-6"
-                       type="submit"
-                       name="submit"
-                       value="Register">
-            </form>
-            <span class="inline">Already have an account?</span>
-            <a class="inline font-semibold text-blue hover:text-blue-900"
-               href="{% url 'bookShare:login' %}">Login here</a>
-            {% if registered %}
-                <h3>Registration Successful!</h3>
-            {% elif username_exists %}
-                <h3>Username already exists.</h3>
-            {% endif %}
+    {% include "bookShare/components/card_start.html" with card_title="Register" %}
+
+    <form id="user_form"
+          method="post"
+          action="{% url 'bookShare:register' %}"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="flex flex-col gap-4 mb-6">
+            {% for item in user_form %}
+                <label class="block">
+                    <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
+                    <input type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" />
+                    {% if item.help_text %}<p class="help text-sm">{{ item.help_text|safe }}</p>{% endif %}
+                </label>
+            {% endfor %}
+            {% for item in profile_form %}
+                <label class="block">
+                    <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
+                    <input type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" maxlength="{{ item.field.widget.attrs.maxlength|default:"64" }}"/>
+                </label>
+                {% if item.help_text %}<p class="help">{{ item.help_text|safe }}</p>{% endif %}
+            {% endfor %}
         </div>
-    </div>
+        <input role="button"
+               class="btn-primary mb-6"
+               type="submit"
+               name="submit"
+               value="Register">
+    </form>
+    <span class="inline">Already have an account?</span>
+    <a class="inline font-semibold text-blue hover:text-blue-900"
+       href="{% url 'bookShare:login' %}">Login here</a>
+    {% if registered %}
+        <h3>Registration Successful!</h3>
+    {% elif username_exists %}
+        <h3>Username already exists.</h3>
+    {% endif %}
+    {% include "bookShare/components/card_end.html" %}
+
 {% endblock %}
