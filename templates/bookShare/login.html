@@ -2,24 +2,23 @@
 
 {% block title %}Login{% endblock %}
 {% block content %}
-    <div class="flex justify-center items-center w-full">
-        <div class="max-w-[650px] lg:w-[500px] shadow-lg rounded-xl p-11 my-5">
-            <h1 class="text-5xl font-semibold text-black mb-11 text-center">Login</h1>
-            <form id="user_form"
-                  method="post"
-                  action="{% url 'bookShare:login' %}"
-                  enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="flex flex-col gap-4 mb-6">
-                    {% include "bookShare/components/input.html" with type="text" name="username" label="Username" required=True placeholder="username123" %}
-                    {% include "bookShare/components/input.html" with type="password" name="password" label="Password" required=True placeholder="*******" %}
+    {% include "bookShare/components/card_start.html" with card_title="Login" %}
 
-                </div>
-                <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
-            </form>
-            <span class="inline">Don't have an account?</span>
-            <a class="inline font-semibold text-blue hover:text-blue-900"
-               href="{% url 'bookShare:register' %}">Register here</a>
+    <form id="user_form"
+          method="post"
+          action="{% url 'bookShare:login' %}"
+          enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="flex flex-col gap-4 mb-6">
+            {% include "bookShare/components/input.html" with type="text" name="username" label="Username" required=True placeholder="username123" %}
+            {% include "bookShare/components/input.html" with type="password" name="password" label="Password" required=True placeholder="*******" %}
+
         </div>
-    </div>
+        <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
+    </form>
+    <span class="inline">Don't have an account?</span>
+    <a class="inline font-semibold text-blue hover:text-blue-900"
+       href="{% url 'bookShare:register' %}">Register here</a>
+    {% include "bookShare/components/card_end.html" %}
+
 {% endblock %}
