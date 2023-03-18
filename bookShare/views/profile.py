@@ -15,7 +15,7 @@ def profile(request, user_id):
         context["following"] = Follows.objects.filter(follower = user_profile)
         context["followers"] = Follows.objects.filter(following=user_profile)
         if request.user.is_authenticated and UserProfile.objects.filter(user=request.user).exists():
-            context["is_following"] = context["followers"].filter(follower=UserProfile.objects.get(user=request.user))
+            context["is_following"] = context["followers"].filter(follower=UserProfile.objects.get(user=request.user)).exists()
         else:
             context["is_following"] = "invalid"
     except:
