@@ -10,7 +10,7 @@ $(document).ready(function() {
             success: function (response) {
                 var instances = response["instances"];
                 if (instances.length == 0) {
-                    $("#results-container").html("<li><h4>No users found.</h4></li>");
+                    $("#results-container").html("<li>No users found.</li>");
                     return;
                 }
                 $("#results-container").empty();
