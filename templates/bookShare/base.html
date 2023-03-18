@@ -12,6 +12,7 @@
               rel="stylesheet"/>
         <link href="{% static 'css/build.css' %}" rel="stylesheet"/>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>var csrftoken = '{{ csrf_token }}';</script>
         <title> BookShare -
             {% block title %}Page{% endblock %}
         </title>
@@ -19,7 +20,7 @@
     <body class="w-full">
         {%block javascript%}
         {%endblock%}
-        
+
         {% include "bookShare/components/header.html" %}
 
         <main class="container">
