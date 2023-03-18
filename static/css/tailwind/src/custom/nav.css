@@ -1,1 +1,4 @@
 /* no styles here yet */ 
+#btn-hamburger {
+  -webkit-tap-highlight-color: transparent;
+}
