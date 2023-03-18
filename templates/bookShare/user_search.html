@@ -5,23 +5,21 @@
     Profile
 {% endblock %}
 
+{% block javascript %}
+<script>
+    var csrftoken = '{{ csrf_token }}';
+</script>
+<script src = {% static 'js/ajax-search.js' %}></script>
+{% endblock %}
+
 {% block content %}
 <br/>
 <form id="user_search_form" method="post" action="{% url 'bookShare:user_search' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="text" id="username" name="username"><br>
-    <input type="submit" name="submit" value="Search" />
+    <input type="text" id="user-search-input" name="username"><br>
 </form>
-{% if results %}
-    Results:<br/>
-    <ul>
-        {% for result in results %}
-            <li>
-                <a href = "{% url 'bookShare:profile' result.user.username %}">{{result.user.username}}</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    No users found.
-{% endif %}
+Results:<br/>
+<ul id = "results-container">
+    <li> Enter text to start searching! </li>
+</ul>
 {% endblock %}
