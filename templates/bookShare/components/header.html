@@ -1,21 +1,43 @@
 {% load static %}
 
 <header class="container py-[15px]">
-  <div class="flex justify-between content-center">
-    <a class="block" href="{% url 'bookShare:browse' %}">
-      <img class="h-[90px]"
-           src="{% static 'images/logo-transparent.png' %}"
-           alt="Logo">
-    </a>
-    <nav class="flex items-center">
-      <ul class="flex items-center gap-10 text-xl text-black">
+  <div class="flex flex-col gap-4 sm:gap-0 sm:flex-row sm:justify-between content-center">
+    <div class="flex justify-between">
+      <a class="block" href="{% url 'bookShare:browse' %}">
+        <img class="h-[90px]"
+             src="{% static 'images/logo-transparent.png' %}"
+             alt="Logo">
+      </a>
+      <button id="btn-hamburger"
+              class="inline-flex sm:hidden items-center justify-center p-2 rounded-md text-black focus:outline-none">
+        <span class="sr-only">Open main menu</span>
+        <svg class="icon-menu-closed block h-10 w-10"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <path stroke="currentColor" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg class="icon-menu-open hidden h-10 w-10"
+             xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round">
+          <path stroke="currentColor" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <nav class="flex bg-gray rounded-md sm:bg-transparent sm:p-0 items-center overflow-hidden box-border max-h-0 sm:max-h-none">
+      <ul class="p-[15px] sm:p-0 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-10 text-lg sm:text-xl text-black">
         {% for item in left_nav_items %}
           <li>
             <a href="{% url item.url %}">{{ item.name }}</a>
           </li>
         {% endfor %}
-        <li class=" border-l-[1px] border-gray">
-          <div class="pl-10 flex items-center gap-5">
+        <li class="sm:border-l-[1px] border-gray">
+          <div class="sm:pl-10 flex items-center gap-5">
             {% if user.is_authenticated %}
               <a href="{% url 'bookShare:logout' %}">Logout</a>
             {% else %}
@@ -33,4 +55,15 @@
       </ul>
     </nav>
   </div>
+  <script>
+    const button = document.querySelector('#btn-hamburger');
+    const menuClosedIcon = button.querySelector('.icon-menu-closed');
+    const menuOpenIcon = document.querySelector('.icon-menu-open');
+    const nav = document.querySelector('nav');
+    button.addEventListener('click', () => {
+      menuClosedIcon.classList.toggle('hidden');
+      menuOpenIcon.classList.toggle('hidden');
+      nav.classList.toggle('max-h-0');
+    });
+  </script>
 </header>
