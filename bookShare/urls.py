@@ -19,5 +19,6 @@ urlpatterns = [
     path('<str:user_id>/profile/followers', views.show_followers, name ="followers"),
     path('<str:user_id>/profile/following', views.show_following, name ="following"),
     path('<str:book_id>/add_interest',views.add_interest, name="add_interest"),
-    path('<str:book_id>/remove_interest', views.remove_interest, name="remove_interest")
+    path('<str:book_id>/remove_interest', views.remove_interest, name="remove_interest"),
+    path('<str:book_id>/interested', views.interested, name="interested")
 ]
