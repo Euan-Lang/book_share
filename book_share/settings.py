@@ -60,6 +60,10 @@ MIDDLEWARE = [
     'livereload.middleware.LiveReloadScript',
 ]
 
+if DEBUG:
+    MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware'] + MIDDLEWARE
+    INSTALLED_APPS = ['whitenoise.runserver_nostatic'] + INSTALLED_APPS
+
 ROOT_URLCONF = 'book_share.urls'
 
 TEMPLATES = [
