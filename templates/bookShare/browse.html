@@ -28,9 +28,9 @@
                     </div>
                     <a href = "{% url 'bookShare:book_info' result.book_id %}">
                     {% if result.cover_image %}
-                        <img class = "result_image" src = "{{ result.cover_image.url }}" alt = "{{ result.title}} by {{ result.author }}" height = 400px width = 400px/><br/>
+                        <img class = "result_image" src = "{{ result.cover_image.url }}" alt = "{{ result.title}} by {{ result.author }}" height = "400px" width = "300px"/><br/>
                     {% else %}
-                        <img src = "{% static 'images/default_book.jpg' %}" alt = "{{ result.title}} by {{ result.author }}" height = 400px width = 300px /><br/>
+                        <img src = "{% static 'images/default_book.jpg' %}" alt = "{{ result.title}} by {{ result.author }}" height = "400px" width = "300px" /><br/>
                     {% endif %}
                     
                     {% if book.is_reserved == False %}
