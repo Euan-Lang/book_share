@@ -1,6 +1,7 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "custom/nav.css";
+@import "custom/footer.css";
 @import "tailwindcss/utilities";
 
 @layer base {
