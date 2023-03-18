@@ -22,6 +22,8 @@
    
     {% if user.username == book.user_profile.user.username %}
         <a href = "{% url 'bookShare:edit_book' book.book_id %}" class="btn-primary mb-6"> Edit </a>
+        
+        <a href = "{% url 'bookShare:interested' book.book_id %}" class="btn-primary mb-6"> View interest users </a>
     {% elif user.is_authenticated and interested != "invalid" %}
         {%  if interested %}
             <a href = "{% url 'bookShare:remove_interest' book.book_id %}" class="btn-primary mb-6"> remove interest </a>
