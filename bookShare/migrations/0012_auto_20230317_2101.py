@@ -12,12 +12,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RenameField(
-            model_name='intrest',
+            model_name='interest',
             old_name='book_id',
             new_name='book',
         ),
         migrations.AlterField(
-            model_name='intrest',
+            model_name='interest',
             name='book',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bookShare.Book'),
         ),
