@@ -2,6 +2,7 @@ import datetime
 from django.contrib.auth.models import User
 from bookShare.forms import UserForm, UserProfileForm
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 from django.urls import reverse
 
 DEFAULT_REPUTATION = 0
@@ -27,13 +28,19 @@ def register(request):
             profile.user = user
             profile.reputation = DEFAULT_REPUTATION
             profile.joined_date = datetime.date.today
+            profile.post_code = profile.post_code.replace(" ", "")
 
             if 'user_image' in request.FILES:
                 profile.user_image = request.FILES['user_image']
 
             profile.save()
 
-            registered = True
+            new_user = authenticate(username=user_form.cleaned_data['username'],
+                                    password=user_form.cleaned_data['password'],
+                                    )
+            login(request, new_user)
+            return redirect(reverse('bookShare:browse'))
+
         else:
             print(user_form.errors, profile_form.errors)
     else:
