@@ -2,38 +2,36 @@
 
 {% load staticfiles %}
 
-{% block title %}Profile{% endblock %}
+{% block javascript %}
+<script>
+    var isFollowing = {{is_following|lower}}
+    var username = '{{profile.user.username}}'
+</script>
+<script src = {% static 'js/ajax-follow.js' %}></script>
+{% endblock %}
+
 {% block content %}
     <h1>{{ profile.user.username }}</h1>
     {% if profile.user_image %}
-        <img src="{{ profile.user_image.url }}" height = 200px width = 200px>
-    </img>
-    <br/>
-{% else %}
-    <img src="{% static 'images/default_pfp.jpg' %}"
-         height="200px"
-         width="200px">
-</img>
-<br/>
-{% endif %}
-Location: {{ profile.location }}
-<br/>
-Total Listings: {{ profile.reputation }}
-<br/>
-<br/>
-Joined Date: {{ profile.joined_date }}
-<br/>
-<a href = "{% url 'bookShare:following' profile.user.username %}">Following: {{ following|length }}</a>
-<br/>
-<a href = "{% url 'bookShare:followers' profile.user.username %}">Followers: {{ followers|length }}</a>
-<br/>
-{% if user.username == profile.user.username %}
-    <a href = "{% url 'bookShare:edit_profile' user.username %}">Edit</a>
-{% elif user.is_authenticated and is_following != "invalid" %}
-    {%  if is_following %}
-        <a href = "{% url 'bookShare:unfollow' profile.user.username %}">Unfollow</a>
+        <img src="{{profile.user_image.url}}" height = "200px" width = "200px"> </img><br/>
     {% else %}
-        <a href = "{% url 'bookShare:follow' profile.user.username %}">Follow</a>
+        <img src="{% static 'images/default_pfp.jpg' %}" height = "200px" width = "200px"> </img><br/>
+    {% endif %}
+    Location: {{profile.location}} <br/>
+    Total Listings: {{profile.reputation}}
+    <br/><br/>
+    Joined Date: {{profile.joined_date}} <br/>
+    <a id = "following-count" href = "{% url 'bookShare:following' profile.user.username %}"> Following: {{following|length}} </a> <br/>
+    <a id = "follower-count" href = "{% url 'bookShare:followers' profile.user.username %}"> Followers: {{followers|length}} </a> <br/>
+    {% if user.username == profile.user.username %}
+        <a href = "{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
+    {% elif user.is_authenticated and is_following != "invalid" %}
+        <button class="btn-primary mb-6" id = "change-follow-button">{% if is_following %}Unfollow{% else %}Follow{% endif %}</button>
+        {% comment %} {%  if is_following %}
+            <a href = "{% url 'bookShare:unfollow' profile.user.username %}"> Unfollow </a>
+        {% else %}
+            <a href = "{% url 'bookShare:follow' profile.user.username %}"> Follow </a>
+        {% endif %} {% endcomment %}
     {% endif %}
 {% endif %}
 {% endblock %}
