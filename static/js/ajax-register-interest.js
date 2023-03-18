@@ -1,15 +1,14 @@
 
 $(document).ready(function() {
-    $('#change-follow-button').on("click", function(e) {
+    $('#change-interest-button').on("click", function(e) {
         e.preventDefault();
         $.ajax( {
             type: 'POST',
-            url: `/bookShare/${username}/${(isFollowing ? "unfollow/" : "follow/")}`,
+            url: `/bookShare/book/${bookId}/${(isInterested ? "remove_interest/" : "add_interest/")}`,
             data: {"csrfmiddlewaretoken":csrftoken},
             success: function (response) {
-                isFollowing = !isFollowing
-                $('#change-follow-button').text((isFollowing ? "Unfollow" : "Follow"))
-                $("#follower-count").text(`Followers: ${response["follow_count"]}`);
+                isInterested = !isInterested
+                $('#change-interest-button').text((isInterested ? "Remove Interest" : "Register Interest"))
             }
         })
     });

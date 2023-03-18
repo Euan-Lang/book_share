@@ -4,7 +4,13 @@
 {% block title %}
     Book Info
 {% endblock %}
-
+{%block javascript%}
+<script>
+    var bookId = '{{book.book_id}}';
+    var isInterested = {{interested|lower}};
+</script>
+<script src = {% static 'js/ajax-register-interest.js' %}></script>
+{%endblock%}
 {% block content %}
     <div class="w-5/12 shadow-lg rounded-xl p-11 my-5">
          <h1 class="text-5xl font-semibold text-black mb-11 text-center">{{book.title}}</h1>
@@ -25,10 +31,6 @@
         
         <a href = "{% url 'bookShare:interested' book.book_id %}" class="btn-primary mb-6"> View Interest Users </a>
     {% elif user.is_authenticated and interested != "invalid" %}
-        {%  if interested %}
-            <a href = "{% url 'bookShare:remove_interest' book.book_id %}" class="btn-primary mb-6"> Remove Interest </a>
-        {% else %}
-            <a href = "{% url 'bookShare:add_interest' book.book_id %}" class="btn-primary mb-6"> Register Interest </a>
-        {% endif %}
+        <button class="btn-primary mb-6" id = "change-interest-button">{% if interested %}Remove Interest{% else %}Register Interest{% endif %}</button>
     {% endif %}
 {% endblock %}
