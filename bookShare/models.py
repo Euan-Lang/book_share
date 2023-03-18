@@ -59,3 +59,12 @@ class Book(models.Model):
 
     def __str__(self):
         return str(self.book_id)+" - " + self.title
+    
+class Interest(models.Model):
+    interest_id = models.AutoField(primary_key=True)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user_profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.user_profile)+ " is interested in "+ str(self.book_id)
+
