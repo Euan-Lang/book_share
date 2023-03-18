@@ -12,11 +12,10 @@ $(document).ready(function() {
                 if (instances.length == 0) {
                     $("#results-container").html("<li><h4>No users found.</h4></li>");
                 }
-                var content = "";
+                $("#results-container").empty();
                 instances.forEach((username) => {
-                    content += `<li><a href = '/bookShare/${username}/profile'>${username}</a></li>`;
+                    $("#results-container").append(`<li><a href = '/bookShare/${username}/profile'>${username}</a></li>`);
                 })
-                $("#results-container").html(content);
             }
         })
     });
