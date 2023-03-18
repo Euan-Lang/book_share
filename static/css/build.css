@@ -873,10 +873,6 @@ select {
   max-height: 0px;
 }
 
-.max-h-full {
-  max-height: 100%;
-}
-
 .w-10 {
   width: 2.5rem;
 }
@@ -889,18 +885,8 @@ select {
   width: 100%;
 }
 
-.max-w-\[600px\] {
-  max-width: 600px;
-}
-
 .max-w-\[650px\] {
   max-width: 650px;
-}
-
-.select-none {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
 }
 
 .flex-col {
@@ -946,11 +932,6 @@ select {
 .border-gray {
   --tw-border-opacity: 1;
   border-color: rgb(229 229 229 / var(--tw-border-opacity));
-}
-
-.bg-slate-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
 .bg-gray {
@@ -1023,18 +1004,6 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.transition-\[max-height\] {
-  transition-property: max-height;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 .after\:ml-0::after {
   content: var(--tw-content);
   margin-left: 0px;
@@ -1056,15 +1025,6 @@ select {
   color: rgb(3 80 221 / var(--tw-text-opacity));
 }
 
-.hover\:text-gray:hover {
-  --tw-text-opacity: 1;
-  color: rgb(229 229 229 / var(--tw-text-opacity));
-}
-
-.hover\:opacity-80:hover {
-  opacity: 0.8;
-}
-
 .focus\:outline-none:focus {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1083,10 +1043,6 @@ select {
     flex-direction: row;
   }
 
-  .sm\:content-center {
-    align-content: center;
-  }
-
   .sm\:items-center {
     align-items: center;
   }
@@ -1095,12 +1051,12 @@ select {
     justify-content: space-between;
   }
 
-  .sm\:gap-10 {
-    gap: 2.5rem;
-  }
-
   .sm\:gap-0 {
     gap: 0px;
+  }
+
+  .sm\:gap-10 {
+    gap: 2.5rem;
   }
 
   .sm\:border-l-\[1px\] {
@@ -1109,10 +1065,6 @@ select {
 
   .sm\:bg-transparent {
     background-color: transparent;
-  }
-
-  .sm\:bg-none {
-    background-image: none;
   }
 
   .sm\:p-0 {
@@ -1130,10 +1082,6 @@ select {
 }
 
 @media (min-width: 1024px) {
-  .lg\:w-\[600px\] {
-    width: 600px;
-  }
-
   .lg\:w-\[500px\] {
     width: 500px;
   }
