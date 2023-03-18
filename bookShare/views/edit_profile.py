@@ -32,17 +32,15 @@ def edit_profile(request, user_id):
         else:
             print(profile_form.errors)
     else:
-        profile_form = UserProfileForm(
-            {
-                'location':profile.location,
-                'post_code':profile.post_code,
-                'phone_number':profile.phone_number,
-            }
-        )
+        profile_form = UserProfileForm(instance=profile)
 
     
     return render(request,
         'bookShare/edit_profile.html',
         context = {
         'profile_form': profile_form,
-        'user_id':user_id})
+        'user_id':user_id,
+        'location':profile.location,
+        'post_code':profile.post_code,
+        'phone_number':profile.phone_number,
+        })
