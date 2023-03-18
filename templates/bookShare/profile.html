@@ -30,10 +30,5 @@
         <a href = "{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
     {% elif user.is_authenticated and is_following != "invalid" %}
         <button class="btn-primary mb-6" id = "change-follow-button">{% if is_following %}Unfollow{% else %}Follow{% endif %}</button>
-        {% comment %} {%  if is_following %}
-            <a href = "{% url 'bookShare:unfollow' profile.user.username %}"> Unfollow </a>
-        {% else %}
-            <a href = "{% url 'bookShare:follow' profile.user.username %}"> Follow </a>
-        {% endif %} {% endcomment %}
     {% endif %}
 {% endblock %}
