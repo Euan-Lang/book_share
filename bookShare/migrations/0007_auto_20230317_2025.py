@@ -22,9 +22,9 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bookShare.UserProfile'),
         ),
         migrations.CreateModel(
-            name='intrest',
+            name='interest',
             fields=[
-                ('intrest_id', models.AutoField(primary_key=True, serialize=False)),
+                ('interest_id', models.AutoField(primary_key=True, serialize=False)),
                 ('book_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bookShare.Book')),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='bookShare.UserProfile')),
             ],
