@@ -1,7 +1,8 @@
-import os 
+import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE','book_share.settings')
 import django
-django.setup() 
+django.setup()
+
 from bookShare.models import UserProfile,User,Follows,Book
 
 def populate():
