@@ -1,9 +1,6 @@
 {% extends 'bookShare/base.html' %}
-{% load staticfiles %}
 
-{% block title %}
-    Profile
-{% endblock %}
+{% load staticfiles %}
 
 {% block javascript %}
 <script>
@@ -31,4 +28,5 @@
     {% elif user.is_authenticated and is_following != "invalid" %}
         <button class="btn-primary mb-6" id = "change-follow-button">{% if is_following %}Unfollow{% else %}Follow{% endif %}</button>
     {% endif %}
+
 {% endblock %}
