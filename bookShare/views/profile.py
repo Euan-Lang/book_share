@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from bookShare.models import UserProfile, Follows
 from django.shortcuts import redirect
 from django.urls import reverse
+from bookShare.views.map_functions import *
 
 def profile(request, user_id):
     context = {}
@@ -10,6 +11,7 @@ def profile(request, user_id):
     try:
         user = User.objects.get(username = user_id)
         user_profile = UserProfile.objects.get(user = user)
+        context = formatContextDict(getCoordsRequest(user_profile.post_code))
         context["profile"] = user_profile
 
         context["following"] = Follows.objects.filter(follower = user_profile)

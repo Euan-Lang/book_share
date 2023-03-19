@@ -2,9 +2,10 @@ from django.shortcuts import render
 from bookShare.models import Book, UserProfile, Interest
 from django.shortcuts import redirect
 from django.urls import reverse
+from bookShare.views.map_functions import getCoordsContextDict
 
 def book_info(request, book_id):
-    context={}
+    context= getCoordsContextDict(book_id)
 
     try:
         book = Book.objects.get(book_id = book_id)

@@ -27,8 +27,8 @@ def formatContextDict(response):
 
     # creates a semi random number to displace the coordinates by but still keeping
     #the point within the radius
-    context["latitude"] = context["latitude"] + context["longitude"] * 0.0005
-    context["longitude"] = context["longitude"] + context["latitude"] * 0.0005
+    context["latitude"] = context["latitude"] + context["longitude"] * 0.0002
+    context["longitude"] = context["longitude"] + context["latitude"] * 0.0002
 
 
     centreDiff = (context["latitude"] - float(response["data"]["latitude"])) + (

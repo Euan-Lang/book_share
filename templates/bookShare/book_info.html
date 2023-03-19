@@ -33,4 +33,6 @@
     {% elif user.is_authenticated and interested != "invalid" %}
         <button class="btn-primary mb-6" id = "change-interest-button">{% if interested %}Remove Interest{% else %}Register Interest{% endif %}</button>
     {% endif %}
+        Map:
+        {% include "bookShare/components/map.html" %}
 {% endblock %}
