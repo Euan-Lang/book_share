@@ -4,12 +4,14 @@ import django
 from django.core.files.images import ImageFile
 django.setup() 
 from bookShare.models import UserProfile,User,Follows,Book
+from django.contrib.auth.hashers import make_password
 
 def populate():
     #add user data here
     user_data=[
             {"user_name":"testuser1",
-            "password":"hello123456789",
+            "password":make_password("Hello123"),
+            "email":"testuser1@gmail.com",
             "location":"Hamilton",
             "post_code":"ML38LT",
             "phone":"07986851525",
@@ -18,7 +20,8 @@ def populate():
             },
             {
             "user_name":"testuser2",
-            "password":"hello123456789",
+            "password":make_password("hello123456789"),
+            "email":"testuser2@gmail.com",
             "location":"Hamilton",
             "post_code":"ML36PZ",
             "phone":"01698365241",
@@ -27,7 +30,8 @@ def populate():
             },
             {
             "user_name":"Jim",
-            "password":"hello123456789",
+            "password":make_password("hello123456789"),
+            "email":"Jim@gmail.com",
             "location":"Hillhead",
             "post_code":"G128SP",
             "phone":"07986851527",
@@ -36,7 +40,8 @@ def populate():
             },
             {
             "user_name":"Lindsey",
-            "password":"hello123456789",
+            "password":make_password("hello123456789"),
+            "email":"Lindsey@gmail.com",
             "location":"Glasgow",
             "post_code":"G13SL",
             "phone":"07986851528",
@@ -45,7 +50,8 @@ def populate():
             },
             {
             "user_name":"Andrew",
-            "password":"hello123456789",
+            "password":make_password("hello123456789"),
+            "email":"Andrew@gmail.com",
             "location":"Partick",
             "post_code":"G116TG",
             "phone":"07986851529",
@@ -163,8 +169,8 @@ def populate():
     ]
 
 
-    def add_user(user_name,password,location,post_code,phone,reputation,img_name):
-        user = User.objects.get_or_create(username=user_name, password=password)[0]
+    def add_user(user_name,password,email,location,post_code,phone,reputation,img_name):
+        user = User.objects.get_or_create(username=user_name, password=password,email=email)[0]
         userProfile = UserProfile.objects.get_or_create(user=user,location=location,post_code=post_code,reputation=reputation,phone_number=phone)[0]
         if img_name and not userProfile.user_image:
             userProfile.user_image = ImageFile(open(os.path.join("populate_media",img_name), "rb"))
@@ -186,7 +192,7 @@ def populate():
     
     print("Populating users...")
     for user in user_data:
-        add_user(user["user_name"],user["password"],user["location"],user["post_code"],user["phone"],user["reputation"],user["img_name"])
+        add_user(user["user_name"],user["password"],user["email"],user["location"],user["post_code"],user["phone"],user["reputation"],user["img_name"])
     
     print("Populating books...")
     for book in book_data:
