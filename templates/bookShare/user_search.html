@@ -11,10 +11,9 @@
 
 {% block content %}
 <br/>
-<form id="user_search_form" method="post" action="{% url 'bookShare:user_search' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="text" id="user-search-input" name="username"><br>
-</form>
+
+<input type="text" id="user-search-input" name="search"><br>
+
 Results:<br/>
 <ul id = "results-container">
     <li> Enter text to start searching! </li>

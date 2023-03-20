@@ -13,7 +13,6 @@ from .register import *
 from .show_followers import *
 from .unfollow import *
 from .user_search import *
-from .interest import *
 from .add_interest import *
 from .remove_interest import *
-from .interest import *
+from .accept_interest import *
