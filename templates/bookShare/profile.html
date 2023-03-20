@@ -18,6 +18,7 @@
         <img src="{% static 'images/default_pfp.jpg' %}" height = "200px" width = "200px"> </img><br/>
     {% endif %}
     Location: {{profile.location}} <br/>
+    {% include "bookShare/components/map.html" %}
     Total Listings: {{profile.reputation}}
     <br/><br/>
     Joined Date: {{profile.joined_date}} <br/>
