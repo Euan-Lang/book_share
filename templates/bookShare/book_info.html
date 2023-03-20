@@ -25,7 +25,7 @@
     ISBN: {{book.isbn}}<br/>
     Genre: {{book.genre}}<br/>
     Uploaded: {{book.upload_time}} by <a href = "{% url 'bookShare:profile' book.user_profile.user.username %}">{{book.user_profile.user.username}}</a><br/><br/>
-    Reserved: {% if book.is_reserved %} Yes {%else%} No {%endif%}
+    Reserved: {% if book.is_reserved %} Yes {%else%} No {%endif%} <br/><br/>
     {% if user.username == book.user_profile.user.username %}
         <a href = "{% url 'bookShare:edit_book' book.book_id %}" class="btn-primary mb-6"> Edit </a><br/><br/>
         
