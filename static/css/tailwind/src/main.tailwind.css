@@ -22,3 +22,8 @@
     @apply mt-1 px-3 py-2 bg-white border shadow-sm border-slate-300 placeholder-slate-400 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full rounded-md sm:text-sm focus:ring-1;
   }
 }
+
+main {
+  min-height: calc(100vh - 120px - 324px); /* 120px = header height, 324px = footer height */
+  /* todo calculate footer height dynamically using js, also adjust for mobile */
+}

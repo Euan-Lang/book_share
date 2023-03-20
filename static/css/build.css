@@ -834,10 +834,6 @@ footer {
   margin-bottom: 1.25rem;
 }
 
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-
 .mb-11 {
   margin-bottom: 2.75rem;
 }
@@ -986,6 +982,10 @@ footer {
   padding-bottom: 15px;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1047,6 +1047,12 @@ footer {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+main {
+  min-height: calc(100vh - 120px - 324px);
+  /* 120px = header height, 324px = footer height */
+  /* todo calculate footer height dynamically using js, also adjust for mobile */
+}
+
 .after\:ml-0::after {
   content: var(--tw-content);
   margin-left: 0px;
@@ -1082,16 +1088,16 @@ footer {
     max-height: none;
   }
 
-  .sm\:w-1\/4 {
-    width: 25%;
+  .sm\:w-1\/5 {
+    width: 20%;
   }
 
-  .sm\:w-2\/4 {
-    width: 50%;
+  .sm\:w-2\/5 {
+    width: 40%;
   }
 
-  .sm\:w-8\/12 {
-    width: 66.666667%;
+  .sm\:w-9\/12 {
+    width: 75%;
   }
 
   .sm\:flex-row {
