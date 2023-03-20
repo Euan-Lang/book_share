@@ -23,7 +23,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=128)
     post_code = models.CharField(max_length=7)
-    phone_number = models.CharField(max_length=11)
+    phone_number = models.CharField(max_length=11, null = True, blank = True)
     joined_date = models.DateField(auto_now_add=True)
     reputation = models.IntegerField()
     user_image = models.ImageField(
