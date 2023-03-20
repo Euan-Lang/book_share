@@ -1,4 +1,7 @@
 {%load static %}
+{%if invalid_map == True%}
+<div id="map">Invalid Postcode - Can't display map.</div>
+{%else%}
 <p hidden id="latitude">{{latitude}}</p>
 <p hidden id="longitude">{{longitude}}</p>
 <p hidden id="centreLat">{{centreLat}}</p>
@@ -9,3 +12,5 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCyZOguzi85PD4EvAj9f-3CL_TXthYzbyQ&callback=initMap&v=weekly" defer
 ></script>
 <script src="{% static 'js/mapBonus.js' %}"></script>
+{%endif%}
+
