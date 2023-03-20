@@ -18,7 +18,6 @@
         <img src="{% static 'images/default_pfp.jpg' %}" height = "200px" width = "200px"> </img><br/>
     {% endif %}
     Location: {{profile.location}} <br/>
-    {% include "bookShare/components/map.html" %}
     Total Listings: {{profile.reputation}}
     <br/><br/>
     Joined Date: {{profile.joined_date}} <br/>
@@ -28,6 +27,7 @@
         <a href = "{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
     {% elif user.is_authenticated and is_following != "invalid" %}
         <button class="btn-primary mb-6" id = "change-follow-button">{% if is_following %}Unfollow{% else %}Follow{% endif %}</button>
-    {% endif %}
+    {% endif %}<br/>
+    {% include "bookShare/components/map.html" %}
 
 {% endblock %}
