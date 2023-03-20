@@ -20,7 +20,7 @@
                             {% if item.html_name == "post_code" %} value = {{post_code}} 
                             {% elif item.html_name == "phone_number" %} value = {{phone_number}} 
                             {% elif item.html_name == "location" %} value = {{location}} 
-                            {% endif %} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}"
+                            {% endif %} class="input" {%if item.html_name == "user_image"%} accept="image/*"{%endif%} placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}"
                             maxlength="{{ item.field.widget.attrs.maxlength|default:"64" }}" />
                             {% if item.help_text %}<p class="help text-sm">{{ item.help_text|safe }}</p>{% endif %}
                         </label>

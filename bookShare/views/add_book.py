@@ -1,8 +1,9 @@
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from bookShare.forms import BookForm
 from bookShare.models import Book, UserProfile
+from django.urls import reverse
 
 @login_required(login_url="bookShare:login")
 def add_book(request):
@@ -15,6 +16,8 @@ def add_book(request):
         if book_form.is_valid():
             user = request.user
             user_profile = UserProfile.objects.get(user = user)
+            user_profile.reputation += 1;
+            user_profile.save()
             book = book_form.save(commit=False)
             book.user_profile = user_profile
             if "cover_image" in request.FILES:
@@ -22,8 +25,7 @@ def add_book(request):
             book.upload_time = datetime.datetime.now
             book.is_reserved = False
             book.save()
-            added =True
-            
+            return redirect(reverse("bookShare:book_info", kwargs={'book_id':book.book_id}))            
         else:
             print(book_form.errors)
         

@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from bookShare.models import UserProfile, Book
 from django import forms
+from django.core.validators import FileExtensionValidator
 
 
 class UserForm(forms.ModelForm):

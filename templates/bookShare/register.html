@@ -22,7 +22,7 @@
             {% for item in profile_form %}
                 <label class="block">
                     <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
-                    <input type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" maxlength="{{ item.field.widget.attrs.maxlength|default:"64" }}"/>
+                    <input type={{ item.field.widget.input_type }} name={{ item.html_name }} {%if item.html_name == "user_image" %} accept="image/*"{%endif%} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" maxlength="{{ item.field.widget.attrs.maxlength|default:"64" }}"/>
                 </label>
                 {% if item.help_text %}<p class="help">{{ item.help_text|safe }}</p>{% endif %}
             {% endfor %}

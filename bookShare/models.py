@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 from uuid import uuid4
+from django.core.validators import FileExtensionValidator
+
 
 
 def rename_user(instance, file_name):
