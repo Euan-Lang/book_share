@@ -63,7 +63,12 @@
             <a href = "{% url 'bookShare:accept_interest' book.book_id book.reserved_user.user.username %}" class="btn-primary mb-6"> Unreserve </a>
         {% endif %}
 
-    {% elif user.is_authenticated and interested != "invalid" %}
+    {% elif not book.is_reserved and user.is_authenticated and interested != "invalid" %}
         <button class="btn-primary mb-6" id = "change-interest-button">{% if interested %}Remove Interest{% else %}Register Interest{% endif %}</button>
+    {% elif user.is_authenticated and book.reserved_user and user.username == book.reserved_user.user.username%}
+        <b>Reserved for you!</b> <br/>
+        The poster of this listing should be in contact with you soon. <br/>
+        You can contact them through their Email: <br/>
+        {{book.user_profile.user.email}}
     {% endif %}
 {% endblock %}
