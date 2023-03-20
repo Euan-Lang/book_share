@@ -177,6 +177,7 @@ class BookTests(TestCase):
         self.assertTrue(Interest.objects.all()[0].book == book)
         self.assertTrue(Interest.objects.all()[0].user_profile == john)
 
+
     def test_check_reserved(self):
         """Check correct reserved details show up when reserved for John"""
         bob = create_bob()
@@ -206,3 +207,33 @@ class BookTests(TestCase):
         response = self.client.get(reverse("bookShare:book_info", kwargs={"book_id":book.book_id}))
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, "Register Interest")
+
+    def test_check_table_updated(self):
+        """Check interest HTML table gets updated when John is interested"""
+        bob = create_bob()
+        book = add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        john = create_john()
+        interest = Interest(user_profile=john, book=book)
+        interest.save()
+        self.client.login(username="Bob",password="testPassword")
+       
+        response = self.client.get(reverse("bookShare:book_info", kwargs={"book_id":book.book_id}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "John")
+        self.assertContains(response, "321@gmail.com")
+
+    def test_check_reserved_update_for_owner(self):
+        """Check the book info page gets updated for Bob to show that John is now the reservee"""
+        bob = create_bob()
+        book = add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        john = create_john()
+        
+        book.is_reserved = True
+        book.reserved_user = john
+        book.save()
+        self.client.login(username="Bob",password="testPassword")
+       
+        response = self.client.get(reverse("bookShare:book_info", kwargs={"book_id":book.book_id}))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "John")
+        self.assertContains(response, "Book is reserved for:")
