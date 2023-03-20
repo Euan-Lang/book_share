@@ -56,6 +56,7 @@ class Book(models.Model):
     genre = models.CharField(max_length=128)
     upload_time = models.DateTimeField(auto_now_add=True)
     is_reserved = models.BooleanField(default=False)
+    reserved_user = models.ForeignKey(UserProfile, null=True, blank=True,on_delete=models.SET_NULL,related_name="reserved_user")
 
     def __str__(self):
         return str(self.book_id)+" - " + self.title
