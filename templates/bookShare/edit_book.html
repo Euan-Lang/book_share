@@ -16,7 +16,9 @@
                 {% for item in bookForm %}
                     <label class="block">
                         <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
-                        <input value={{ item.value }} type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" />
+
+                        <input value={{ item.value }} {%if item.html_name == "cover_image"%} accept="image/*"{%endif%} type={{ item.field.widget.input_type }} name={{ item.html_name }} class="input" placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}" />
+
                         {% if item.help_text %}<p class="help text-sm">{{ item.help_text|safe }}</p>{% endif %}
                     </label>
                 {% endfor %}

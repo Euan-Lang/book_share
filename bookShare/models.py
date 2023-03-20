@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import os
 from uuid import uuid4
+from django.core.validators import FileExtensionValidator
+
 
 
 def rename_user(instance, file_name):
@@ -23,7 +25,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=128)
     post_code = models.CharField(max_length=7)
-    phone_number = models.CharField(max_length=11)
+    phone_number = models.CharField(max_length=11, null = True, blank = True)
     joined_date = models.DateField(auto_now_add=True)
     reputation = models.IntegerField()
     user_image = models.ImageField(
@@ -56,6 +58,7 @@ class Book(models.Model):
     genre = models.CharField(max_length=128)
     upload_time = models.DateTimeField(auto_now_add=True)
     is_reserved = models.BooleanField(default=False)
+    reserved_user = models.ForeignKey(UserProfile, null=True, blank=True,on_delete=models.SET_NULL,related_name="reserved_user")
 
     def __str__(self):
         return str(self.book_id)+" - " + self.title
