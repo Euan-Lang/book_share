@@ -70,5 +70,7 @@
         The poster of this listing should be in contact with you soon. <br/>
         You can contact them through their Email: <br/>
         {{book.user_profile.user.email}}
-    {% endif %}
+    {% endif %}<br/>
+        Map:
+        {% include "bookShare/components/map.html" %}
 {% endblock %}
