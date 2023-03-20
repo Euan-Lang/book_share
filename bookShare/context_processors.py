@@ -1,4 +1,4 @@
-from bookShare.models import UserProfile
+from bookShare.models import UserProfile, Book
 
 
 def base_processor(request):
@@ -24,5 +24,8 @@ def base_processor(request):
     else:
         return_dict["right_nav_items"].append(
             {"name": "Login", "url": "bookShare:login"})
+
+    return_dict["latest_added_books"] = Book.objects.order_by(
+        "-upload_time")[:3]
 
     return return_dict
