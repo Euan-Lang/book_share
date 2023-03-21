@@ -9,6 +9,7 @@ from django.urls import reverse
 def add_book(request):
     added = False
     submitted = False
+    context = {}
     if request.method == 'POST':
         
 
@@ -27,11 +28,16 @@ def add_book(request):
             book.save()
             return redirect(reverse("bookShare:book_info", kwargs={'book_id':book.book_id}))            
         else:
-            print(book_form.errors)
+            context["errors"] = book_form.errors
         
         submitted =True
         
     else:
         book_form = BookForm()
+
+    context['book_form'] = book_form
+    context["added"] = added
+    context["submitted"] = submitted
+
     
-    return render(request,'bookShare/add_book.html', context={'book_form': book_form,'added':added,'submitted':submitted})
+    return render(request,'bookShare/add_book.html', context=context)
