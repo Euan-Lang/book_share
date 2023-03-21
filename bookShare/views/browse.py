@@ -31,15 +31,20 @@ def browse(request):
         results = results.filter(author__icontains=author_query)
         if available_only:
             results = results.filter(is_reserved__exact=False)
-        
-        location = getCoordsRequest(postcode)
-        valid_postcode = True if location["status"] == "match" and location["match_type"] == "unit_postcode" else False
-        print("Coords!", getCoordsRequest(postcode))
+
+        if(postcode):
+            location = getCoordsRequest(postcode)
+            valid_postcode = True if location["status"] == "match" and location["match_type"] == "unit_postcode" else False
+            print("Coords!", getCoordsRequest(postcode))
+        else:
+            valid_postcode = False
 
         # Sort results into correct order
         results = sort_results(results, sort_order)
         context["results"] = results
         return JsonResponse({"results_container":render(request,'bookShare/browse_results.html', context=context).content.decode("utf-8"), "valid_postcode": valid_postcode})
+
+
     else:
         return render(request,'bookShare/browse.html', context=context)
 
