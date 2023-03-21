@@ -41,7 +41,6 @@ def browse(request):
 
         # Sort results into correct order
         results = sort_results(results, sort_order)
-        print(results)
         context["results"] = results
         return JsonResponse({"results_container":render(request,'bookShare/browse_results.html', context=context).content.decode("utf-8"), "valid_postcode": valid_postcode})
 

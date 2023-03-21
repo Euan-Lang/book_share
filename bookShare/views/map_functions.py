@@ -43,9 +43,7 @@ def formatContextDict(response):
 def getCoordsRequest(userPostcode):
     url = urllib.parse.quote("api.getthedata.com/postcode/" + userPostcode)
     url = "https://" + url
-    print(url)
     response = requests.get(url)
-    print(response)
     response = response.json()
     return response
 
