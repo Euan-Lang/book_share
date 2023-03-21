@@ -8,19 +8,26 @@
 {% block content %}
 <br/>
 
-{% include "bookShare/components/card_start.html" with card_title=display.name%}
+<div class="flex justify-center items-center w-full">
+    <div class="max-w-[800px] lg:w-auto shadow-lg rounded-xl p-11 my-5">
+      <h1 class="text-5xl font-semibold text-black mb-11 text-center">{{ display_name}}</h1>
+  
 
-{% if results %}<br/>
-    <ul>
-        {% for result in results %}
-            <li>
-                <a href = "{% url 'bookShare:profile' result.user.username %}">{{result.user.username}}</a>
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    No users found.
-{% endif %}
+        {% if results %}<br/>
+            <div class="grid grid-cols-3 lg:grid-cols-4 gap-[50px]">
+                {% for result in results %}
+                <div class="col-span-1">
+                    {%if result.user_image %}
+                    {% include "bookShare/components/user_grid_item.html" with username=result.user.username image_url=result.user_image.url%}
+                    {%else%}
+                    {% include "bookShare/components/user_grid_item.html" with username=result.user.username image_url="none"%}
+                    {%endif%}
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            No users found.
+        {% endif %}
 
 {% include "bookShare/components/card_end.html" %}
 {% endblock %}
