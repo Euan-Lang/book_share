@@ -17,9 +17,9 @@
                         <label class="block">
                             <span class="block text-sm font-medium text-slate-700 {% if item.field.widget.required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ item.label }}</span>
                             <input type={{ item.field.widget.input_type }} name={{ item.html_name }} 
-                            {% if item.html_name == "post_code" %} value = {{post_code}} 
-                            {% elif item.html_name == "phone_number" %} value = {{phone_number}} 
-                            {% elif item.html_name == "location" %} value = {{location}} 
+                            {% if item.html_name == "post_code" %} value = "{{post_code}}"
+                            {% elif item.html_name == "phone_number" %} value = "{{phone_number}}"
+                            {% elif item.html_name == "location" %} value = "{{location}}"" 
                             {% endif %} class="input" {%if item.html_name == "user_image"%} accept="image/*"{%endif%} placeholder="{{ item.field.widget.attrs.placeholder|default:"Placeholder" }}"
                             maxlength="{{ item.field.widget.attrs.maxlength|default:"64" }}" />
                             {% if item.help_text %}<p class="help text-sm">{{ item.help_text|safe }}</p>{% endif %}
