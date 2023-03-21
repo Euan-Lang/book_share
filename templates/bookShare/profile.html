@@ -40,15 +40,15 @@
                 <button class="btn-primary mb-6 text-center" id = "change-follow-button">{% if is_following %}Unfollow{% else %}Follow{% endif %}</button>
             {% endif %}
         </div>
-        <div class="block float-left w-full mb-3" id = "lower-content">
+        <div class="text-center block float-left w-full mb-3" id = "lower-content">
             <hr class = "mt-7 sm:mt-14 mb-3">
             <div class="sm:ml-20 ml-4 block float-left" id = "following">
                 <span class = "text-xs">Following</span><br/>
-                <span class="text-3xl sm:ml-4"><b><a id = "following-count"  href = "{% url 'bookShare:following' profile.user.username %}"> {{following|length}} </a> </b></span>
+                <span class="text-3xl"><b><a id = "following-count"  href = "{% url 'bookShare:following' profile.user.username %}"> {{following|length}} </a> </b></span>
             </div>
             <div class = "block float-right mr-4 sm:mr-20" id = "followers">
                 <span class = "text-xs">Followers</span><br/>
-                <span class="text-3xl sm:ml-4"><b><a id = "follower-count"  href = "{% url 'bookShare:followers' profile.user.username %}"> {{followers|length}} </a> </b></span>
+                <span class="text-3xl"><b><a id = "follower-count"  href = "{% url 'bookShare:followers' profile.user.username %}"> {{followers|length}} </a> </b></span>
             </div>
         </div>
         <hr class = "mt-14 w-full mb-8">

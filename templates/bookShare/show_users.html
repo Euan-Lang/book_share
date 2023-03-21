@@ -8,7 +8,8 @@
 {% block content %}
 <br/>
 
-{{display_name}}
+{% include "bookShare/components/card_start.html" with card_title=display.name%}
+
 {% if results %}<br/>
     <ul>
         {% for result in results %}
@@ -20,4 +21,6 @@
 {% else %}
     No users found.
 {% endif %}
+
+{% include "bookShare/components/card_end.html" %}
 {% endblock %}
