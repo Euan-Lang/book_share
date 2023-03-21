@@ -2,6 +2,7 @@
 $(document).ready(function(e) {
     $('#book_search_form').on("submit", submitHandler);
     $('#filter_search_form').on("input", submitHandler);
+    $('#sort_form').on("input", submitHandler);
     submitHandler(null); // Load in results initially
 });
 
@@ -9,7 +10,7 @@ function submitHandler(e) {
     if (e) {
         e.preventDefault();
     }
-    var fields = ["general_query","genre_query","publisher_query","author_query","max_radius_query","available_only"]
+    var fields = ["general_query","genre_query","publisher_query","author_query","max_radius_query","available_only","sort"]
     console.log(csrftoken);
     var data = {"csrfmiddlewaretoken":csrftoken};
     for (var field in fields) {

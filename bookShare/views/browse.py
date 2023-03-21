@@ -4,6 +4,7 @@ from django.db.models import Q
 
 def browse(request):
     context = {}
+    print("ajax", request.is_ajax())
     if request.method == "POST":
         general_query = request.POST["general_query"]
         genre_query = request.POST["genre_query"]
@@ -14,6 +15,7 @@ def browse(request):
         except ValueError:
             max_radius_query = 1000
         available_only = True if request.POST["available_only"] == "true" else False
+        sort_order = request.POST["sort"]
         print(max_radius_query, available_only)
         
         # Select all books which contain the general query in any field
@@ -24,7 +26,27 @@ def browse(request):
         results = results.filter(author__icontains=author_query)
         if available_only:
             results = results.filter(is_reserved__exact=False)
+                
+        # Sort results into correct order
+        results = sort_results(results, sort_order)
         context["results"] = results
         return render(request,'bookShare/browse_results.html', context=context)
     else:
         return render(request,'bookShare/browse.html', context=context)
+
+def sort_results(query_set, sort_order):
+    orderings = {
+        "az": "title",
+        "za": "-title",
+        # "closest_first": pass,
+        # "furthest_first": ,
+        "newest_first": "-upload_time",
+        "oldest_first": "upload_time",
+        "lowest_reputation_first": "user_profile__reputation",
+        "highest_reputation_first": "-user_profile__reputation",
+    }
+    if orderings.get(sort_order):
+        return query_set.order_by(orderings.get(sort_order))
+    else:
+        # Invalid sort input, so order alphabetically
+        return query_set.order_by("title")
