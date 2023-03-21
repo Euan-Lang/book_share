@@ -21,4 +21,5 @@ urlpatterns = [
     path('<str:user_id>/unfollow/', views.unfollow, name="unfollow"),
     path('<str:user_id>/profile/followers', views.show_followers, name ="followers"),
     path('<str:user_id>/profile/following', views.show_following, name ="following"),
+    path('webhook/',views.webhook, name="web_hook"),
 ]
