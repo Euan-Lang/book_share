@@ -2,7 +2,7 @@
 
 <div class="transition-colors transition-transform hover:bg-[rgb(51,121,252)] hover:translate-y-1 hover:text-white bg-white shadow-lg rounded-xl h-[150px] w-[120px] lg:h-[200px] lg:w-[160px]">
     <a href="{% url 'bookShare:profile' username %}">
-        <img class="bg-white rounded-xl w-full h-4/5" src={%if image_url != "none"%}{{image_url}}{%else%}"{% static 'images/default_pfp.jpg' %}"{%endif%}/>
+        <img class="bg-white rounded-xl w-full h-4/5" src={%if image_url != "none"%}{{image_url}}{%else%}"{% static 'images/default_pfp.jpg' %}"{%endif%}>
         <div class="text-center align-middle sm:text-lg mt-1"> <b>{{username}}</b> </div>
     </a>
 </div>
