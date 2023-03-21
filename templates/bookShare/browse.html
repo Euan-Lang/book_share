@@ -24,28 +24,28 @@
 
         <form id = "filter_search_form" enctype = "multipart/form-data">
             <div class = "filter_box">
-                <h2> Genre <span class = "open_indicator">&#9660</span></h2>
+                <h2 class = "cursor-pointer"> Genre <span class = "open_indicator">&#9660</span></h2>
                 <div class = "collapsible">
                     <input type = "text" id = "genre_query_field" name="genre_query">
                 </div>
             </div>
 
             <div class = "filter_box">
-                <h2> Publisher <span class = "open_indicator">&#9660</span></h2>
+                <h2 class = "cursor-pointer"> Publisher <span class = "open_indicator">&#9660</span></h2>
                 <div class = "collapsible">
                     <input type = "text" id = "publisher_query_field" name="publisher_query">
                 </div>
             </div>
 
             <div class = "filter_box">
-                <h2> Author <span class = "open_indicator">&#9660</span></h2>
+                <h2 class = "cursor-pointer"> Author <span class = "open_indicator">&#9660</span></h2>
                 <div class = "collapsible">
                     <input type = "text" id = "author_query_field" name = "author_query">
                 </div>
             </div>
 
             <div class = "filter_box">
-                <h2> Maximum Distance <span class = "open_indicator">&#9660</span></h2>
+                <h2 class = "cursor-pointer"> Maximum Distance <span class = "open_indicator">&#9660</span></h2>
                 <div class = "collapsible">
                     Your Postcode: <input type = "text" id = "postcode_field" name = "postcode" onkeyup="$(this).val($(this).val().toUpperCase())"><span id = "valid_postcode"></span><br/>
                     Distance <input type = "number" id = "max_radius_field" name = "max_radius" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode < 32">
@@ -53,7 +53,7 @@
             </div>
 
             <div class = "filter_box">
-                <h2> Available Only <span class = "open_indicator">&#9660</span></h2>
+                <h2 class = "cursor-pointer"> Available Only <span class = "open_indicator">&#9660</span></h2>
                 <div class = "collapsible">
                     <input type = "checkbox" id = "available_only_field" name = "available_only" value = "true">
                 </div>
