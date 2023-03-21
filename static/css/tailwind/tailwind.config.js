@@ -6,9 +6,13 @@ module.exports = {
         sans: ["Work Sans", "sans-serif"],
       },
       colors: {
-        white: "#ffffff",
+        white: {
+          DEFAULT: "#ffffff",
+        },
         black: "#1E2019",
-        gray: "#E5E5E5",
+        gray: {
+          DEFAULT: "#E5E5E5",
+        },
         blue: {
           DEFAULT: "#3379FC",
           900: "#0350DD",
