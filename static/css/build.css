@@ -1590,6 +1590,10 @@ footer {
   font-weight: 600;
 }
 
+.uppercase {
+  text-transform: uppercase;
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(30 32 25 / var(--tw-text-opacity));

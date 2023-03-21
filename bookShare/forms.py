@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from bookShare.models import UserProfile, Book
 from django import forms
 from django.core.validators import FileExtensionValidator
+from django.core.exceptions import ValidationError
 
 
 class UserForm(forms.ModelForm):
@@ -32,6 +33,10 @@ class UserProfileForm(forms.ModelForm):
         fields = ('location', 'post_code', 'phone_number', 'user_image')
 
 
+def only_digits(val):
+    if val.replace("X", "1").replace("x", "1").isdigit()==False:
+        raise ValidationError('ISBN cannot contain non-digits except X!')
+
 class BookForm(forms.ModelForm):
     title = forms.CharField(label="Title", widget=forms.TextInput(
         attrs={"placeholder": "Harry Potter"}))
@@ -40,7 +45,7 @@ class BookForm(forms.ModelForm):
     author = forms.CharField(label="Author", widget=forms.TextInput(
         attrs={"placeholder": "JK Rowling"}))
     isbn = forms.CharField(label="ISBN", widget=forms.TextInput(
-        attrs={"placeholder": "9780747532743"}))
+        attrs={"placeholder": "9780747532743", "maxlength": "13"}), validators=[only_digits])
     cover_image = forms.ImageField(label="Cover Image", required=False)
     genre = forms.CharField(label="Genre", widget=forms.TextInput(
         attrs={"placeholder": "Fantasy"}))
