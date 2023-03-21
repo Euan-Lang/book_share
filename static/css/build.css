@@ -1176,6 +1176,14 @@ footer {
   height: 80%;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
+.h-\[150px\] {
+  height: 150px;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -1218,6 +1226,14 @@ footer {
 
 .w-auto {
   width: auto;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.w-\[120px\] {
+  width: 120px;
 }
 
 .max-w-\[650px\] {
@@ -1344,6 +1360,14 @@ footer {
 
 .gap-\[20px\] {
   gap: 20px;
+}
+
+.gap-\[25px\] {
+  gap: 25px;
+}
+
+.gap-\[40px\] {
+  gap: 40px;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -1784,6 +1808,14 @@ main {
     width: 200px;
   }
 
+  .sm\:w-\[160px\] {
+    width: 160px;
+  }
+
+  .sm\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
   }
@@ -1802,6 +1834,10 @@ main {
 
   .sm\:gap-10 {
     gap: 2.5rem;
+  }
+
+  .sm\:gap-\[50px\] {
+    gap: 50px;
   }
 
   .sm\:border-l-\[1px\] {
@@ -1899,6 +1935,10 @@ main {
 }
 
 @media (min-width: 1024px) {
+  .lg\:h-\[200px\] {
+    height: 200px;
+  }
+
   .lg\:w-\[500px\] {
     width: 500px;
   }
@@ -1909,5 +1949,13 @@ main {
 
   .lg\:w-auto {
     width: auto;
+  }
+
+  .lg\:w-\[160px\] {
+    width: 160px;
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
