@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+{% if results %}
+    {% for result in results %}
+        <div class="book_result">
+            <div class="genre_bar">
+                <p class="genre">{{ result.genre }}</p>
+            </div>
+            <a href = "{% url 'bookShare:book_info' result.book_id %}">
+            {% if result.cover_image %}
+                <img {% if result.is_reserved == True %} class = "opacity-25" {% else %} class="opacity-100" {%endif%} src = "{{ result.cover_image.url }}" alt = "{{ result.title}} by {{ result.author }}" height = "400px" width = "300px"/><br/>
+            {% else %}
+                <img {% if result.is_reserved == True %} class = "opacity-25" {% else %} class="opacity-100" {%endif%} src = "{% static 'images/default_book.jpg' %}" alt = "{{ result.title}} by {{ result.author }}" height = "400px" width = "300px" /><br/>
+            {% endif %}
+            
+            {% if result.is_reserved == True %}
+            <b><i>Reserved</i><b>
+            {% endif %}
+            
+            </a>
+            
+            <h2><a href = "{% url 'bookShare:book_info' result.book_id %}">{{ result.title }}</a></h2><br/>
+            <h4><a href = "" onclick = "searchAuthor(event, this.innerHTML)">{{ result.author }}</a></h4><br/>
+        </div>
+    {% endfor %}
+{% else %}
+    No books found.
+{% endif %}

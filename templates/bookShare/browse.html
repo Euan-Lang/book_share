@@ -5,21 +5,71 @@
     Browse
 {% endblock %}
 
+{% block javascript %}
+<script src = {% static 'js/ajax-browse-general-query.js' %}></script>
+{% endblock %}
+
 {% block content %}
-<section id="search_box_wrapper">
-    <div id="search_box">
-        <form id="book_search_form" method="post" action="{% url 'bookShare:browse' %}" enctype="multipart/form-data">
-            {% csrf_token %}
-            <input type="submit" name="submit" value="Search">
-            <input type="text" id="query_text_field" name="query_text">
+<section id = "search_box_wrapper">
+    <div id = "search_box">
+        <form id = "book_search_form" enctype = "multipart/form-data">
+            <input type = "submit" name = "submit" value = "Search">
+            <input type = "text" id = "general_query_field" name = "general_query">
         </form>
     </div>
 </section>
 <section id="main">
-    <div id="search_sidebar">
+    <div id = "search_sidebar">
+        <h1>Filter Books</h1>
 
+        <form id = "filter_search_form" enctype = "multipart/form-data">
+            <div id = "genre_box">
+                <h2> Genre <span id = "genre_box_indicator">&#9660</span></h2>
+                <input type = "text" id = "genre_query_field" name="genre_query">
+            </div>
+
+            <div id = "publisher_box">
+                <h2> Publisher <span id = "publisher_box_indicator">&#9660</span></h2>
+                <input type = "text" id = "publisher_query_field" name="publisher_query">
+            </div>
+
+            <div id = "author_box">
+                <h2> Author <span id = "author_box_indicator">&#9660</span></h2>
+                <input type = "text" id = "author_query_field" name = "author_query">
+            </div>
+
+            <div id = "max_radius_box">
+                <h2> Maximum Distance <span id = "max_radius_box_indicator">&#9660</span></h2>
+                Your Postcode: <input type = "text" id = "postcode_field" name = "postcode" onkeyup="$(this).val($(this).val().toUpperCase())"><span id = "valid_postcode"></span><br/>
+                Distance <input type = "number" id = "max_radius_query_field" name = "max_radius_query" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode < 32">
+            </div>
+
+            <div id = "available_only_box">
+                <h2> Available Only <span id = "available_only_indicator">&#9660</span></h2>
+                <input type = "checkbox" id = "available_only_field" name = "available_only" value = "true">
+            </div>
+
+            <input type = "submit" name = "submit" value = "search">
+        </form>
     </div>
-    <div id = "results_pane" class="" >
+
+    <div id = "results_container_wrapper">
+         <div id = "sort_wrapper">
+            <form id = "sort_form" enctype = "multipart/form-data">
+                <select name = "sort" id = "sort_field">
+                    <option value = "az">A - Z</option>
+                    <option value = "za">Z - A</option>
+                    <option value = "closest_first">Closest</option>
+                    <option value = "furthest_first">Furthest</option>
+                    <option value = "newest_first">Newest First</option>
+                    <option value = "oldest_first">Oldest First</option>
+                    <option value = "lowest_reputation_first">Lowest Reputation First</option>
+                    <option value = "highest_reputation_first">Highest Reputation First</option>
+                </select>
+            </form>
+        </div>
+        
+    <div id = "results_container" class="" >
         {% if results %}
             {% for result in results %}
                 <div class="w-5/12 shadow-lg rounded-xl p-11 my-5 ">
