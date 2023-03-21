@@ -20,10 +20,10 @@
                 <img src="{% static 'images/default_book.jpg' %}" />
             {% endif %}
         </div>
-        <div class="text-black">
+        <div class="text-black flex-1">
             <h1 class="text-4xl md:text-5xl font-semibold text-black mb-6 w-[80%] md:w-[70%]">{{ book.title }}</h1>
             <p class="underline underline-offset-2">{{ book.author }}</p>
-            <div class="relative overflow-x-auto my-6">
+            <div class="relative overflow-x-auto my-6 w-full md:w-[70%]">
                 <table class="table">
                     <thead class="thead">
                         <tr>
@@ -74,7 +74,7 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="mt-10 sm:mt-0">
         {% if user.is_authenticated and book.reserved_user and user.username == book.reserved_user.user.username %}
             <p class="font-semibold">Reserved for you!</p>
             The poster of this listing should be in contact with you soon.
@@ -95,8 +95,8 @@
                     <tr>
                         <th>User</th>
                         <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Reserve?</th>
+                        <th class="hidden sm:table-cell">Phone Number</th>
+                        <th class="hidden sm:table-cell">Reserve?</th>
                     </tr>
                 </thead>
                 <tbody class="tbody">
@@ -109,13 +109,13 @@
                                          src="{% if user.user_profile.user_image %} {{ user.user_profile.user_image.url }} {% else %} {% static 'images/default_pfp.jpg' %} {% endif %}"
                                          alt="Profile">
                                     <div class="font-medium dark:text-white">
-                                        <div href="{% url 'bookShare:profile' user.user_profile.user.username %}">{{ user.user_profile.user.username }}</div>
+                                        <div class="text-black">{{ user.user_profile.user.username }}</div>
                                         <div class="text-sm text-gray-500">Joined in {{ book.user_profile.user.date_joined|date:"F Y" }}</div>
                                     </div>
                                 </a>
                             </td>
-                            <td>{{ user.user_profile.user.email }}</td>
-                            <td>
+                            <td class="hidden sm:table-cell">{{ user.user_profile.user.email }}</td>
+                            <td class="hidden sm:table-cell">
                                 {% if user.user_profile.phone_number %}
                                     {{ user.user_profile.phone_number }}
                                 {% else %}
