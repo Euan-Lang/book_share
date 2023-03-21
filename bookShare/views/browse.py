@@ -51,9 +51,9 @@ def browse(request):
             "authors": Book.objects.values_list("author").distinct(),
             "publishers": Book.objects.values_list("publisher").distinct(),
         }
-        context["user_postcode"] = UserProfile.objects.get(
-            user=request.user).post_code
-        # print("hello", request.user.post_code)
+        if request.user.is_authenticated:
+            context["user_postcode"] = UserProfile.objects.get(
+                user=request.user).post_code
         return render(request, 'bookShare/browse.html', context=context)
 
 

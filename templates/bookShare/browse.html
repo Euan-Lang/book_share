@@ -69,7 +69,12 @@
                     <div id="max_radius_dropdownCheckbox">
                         <label class="block">
                             <span class="block text-sm font-medium text-slate-700 ">Postcode:</span>
-                            <input type="text" id="postcode_field" name="postcode" class="input" placeholder={{ user_postcode|default:'' }} onkeyup="$(this).val($(this).val().toUpperCase())" />
+                            <input type="text"
+                                   id="postcode_field"
+                                   name="postcode"
+                                   class="input"
+                                   placeholder="{{ user_postcode|default:'' }}"
+                                   onkeyup="$(this).val($(this).val().toUpperCase())"/>
                         </label>
                         <label class="block">
                             <span class="block text-sm font-medium text-slate-700">Max distance:</span>
