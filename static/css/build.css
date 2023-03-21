@@ -1080,6 +1080,10 @@ footer {
   width: 0.5rem;
 }
 
+.w-5\/12 {
+  width: 41.666667%;
+}
+
 .w-\[80\%\] {
   width: 80%;
 }
@@ -1238,6 +1242,7 @@ footer {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
+
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -1256,9 +1261,6 @@ footer {
   padding-bottom: 0.5rem;
 }
 
-.pt-4 {
-  padding-top: 1rem;
-}
 .pb-5 {
   padding-bottom: 1.25rem;
 }
@@ -1273,6 +1275,10 @@ footer {
 
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-center {
