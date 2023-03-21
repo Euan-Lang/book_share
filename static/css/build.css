@@ -1358,12 +1358,17 @@ footer {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+<<<<<<< HEAD
 .grid-rows-4 {
   grid-template-rows: repeat(4, minmax(0, 1fr));
 }
 
 .grid-rows-3 {
   grid-template-rows: repeat(3, minmax(0, 1fr));
+=======
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+>>>>>>> 10f1f8b (browsePage_pieter: make browsing page responsive)
 }
 
 .flex-col {
@@ -1416,6 +1421,15 @@ footer {
 
 .gap-20 {
   gap: 5rem;
+}
+
+.gap-x-5 {
+  -moz-column-gap: 1.25rem;
+       column-gap: 1.25rem;
+}
+
+.gap-y-10 {
+  row-gap: 2.5rem;
 }
 
 .space-x-4 > :not([hidden]) ~ :not([hidden]) {
@@ -1650,6 +1664,11 @@ footer {
   padding-bottom: 0.625rem;
 }
 
+.py-0 {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1688,6 +1707,10 @@ footer {
 
 .pl-5 {
   padding-left: 1.25rem;
+}
+
+.pt-20 {
+  padding-top: 5rem;
 }
 
 .text-center {
@@ -2200,6 +2223,12 @@ main {
   }
 }
 
+@media not all and (min-width: 1280px) {
+  .max-xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:visible {
     visibility: visible;
@@ -2382,6 +2411,10 @@ main {
     margin-top: 5rem;
   }
 
+  .md\:mb-10 {
+    margin-bottom: 2.5rem;
+  }
+
   .md\:w-\[40\%\] {
     width: 40%;
   }
@@ -2390,8 +2423,20 @@ main {
     width: 70%;
   }
 
+  .md\:w-\[300px\] {
+    width: 300px;
+  }
+
   .md\:flex-1 {
     flex: 1 1 0%;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:flex-row {
@@ -2400,6 +2445,10 @@ main {
 
   .md\:gap-20 {
     gap: 5rem;
+  }
+
+  .md\:gap-10 {
+    gap: 2.5rem;
   }
 
   .md\:rounded-xl {
@@ -2415,9 +2464,18 @@ main {
     padding: 2.75rem;
   }
 
+  .md\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .md\:leading-10 {
+    line-height: 2.5rem;
   }
 
   .md\:shadow-md {
@@ -2448,11 +2506,26 @@ main {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+<<<<<<< HEAD
   .lg\:gap-\[50px\] {
     gap: 50px;
   }
 
   .lg\:p-11 {
     padding: 2.75rem;
+=======
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:gap-10 {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+>>>>>>> 10f1f8b (browsePage_pieter: make browsing page responsive)
   }
 }
