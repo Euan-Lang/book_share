@@ -6,21 +6,35 @@ $(document).ready(function(e) {
     $('#sort_form').on("input", submitHandler);
     submitHandler(null); // Load in results initially
 
-    $('.filter_box .collapsible').css({'display':'none'});
+    collapseAllFilterboxes();
     $('.filter_box h2').on("click", function (e) {
-        if (this.contentsVisible) {
-            this.contentsVisible = false;
-            console.log(this);
-            $(this.parentNode).find('.collapsible').css({'display':'none'});
-            $(this.parentNode).find('.open_indicator').html("&#9660");
-            $(this.parentNode).find('input').val(""); // Reset input field when closed
+        if (this.parentNode.contentsVisible) {
+            collapseFilterbox(this.parentNode);
         } else {
-            this.contentsVisible = true;
-            $(this.parentNode).find('.collapsible').css({'display':'block'});
-            $(this.parentNode).find('.open_indicator').html("&#9650");
+            openFilterbox(this.parentNode);
         }
     });
 });
+
+function openFilterbox(elem) {
+    elem.contentsVisible = true;
+    $(elem).find('.collapsible').css({'display':'block'});
+    $(elem).find('.open_indicator').html("&#9650");
+}
+
+function collapseFilterbox(elem) {
+    elem.contentsVisible = false;
+    $(elem).find('.collapsible').css({'display':'none'});
+    $(elem).find('.open_indicator').html("&#9660");
+    $(elem).find('input').val(""); // Reset input field when closed
+}
+
+function collapseAllFilterboxes() {
+    var elements = $('.filter_box');
+    for (var i=0; i<elements.length; i++) {
+        collapseFilterbox(elements[i]);
+    }
+}
 
 function submitHandler(e) {
     if (e) {
@@ -51,10 +65,13 @@ function submitHandler(e) {
     });
 }
 
-function searchAuthor(e, author) {
-    e.preventDefault();
+function searchField(field, value) {
+    field = "#"+ field +"_query_field";
     $("#book_search_form")[0].reset();
     $("#filter_search_form")[0].reset();
-    $("#author_query_field").val(author);
+    collapseAllFilterboxes();
+    console.log($(field));
+    openFilterbox($(field)[0].parentNode.parentNode);
+    $(field).val(value);
     submitHandler(null);
 }

@@ -16,9 +16,9 @@
                 </div>
             </div>
             <div class="px-6 pt-4 pb-2">
-                <span class="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 mr-2 mb-2">{{result.author}}</span>
-                <span class="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 mr-2 mb-2">{{result.genre}}</span>
-                <span class="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 mr-2 mb-2">{{result.publisher}}</span>
+                <span class="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 mr-2 mb-2 cursor-pointer" onclick="searchField('author', '{{result.author}}')">{{result.author}}</span>
+                <span class="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 mr-2 mb-2 cursor-pointer" onclick="searchField('genre', '{{result.genre}}')">{{result.genre}}</span>
+                <span class="inline-block bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 mr-2 mb-2 cursor-pointer" onclick="searchField('publisher', '{{result.publisher}}')">{{result.publisher}}</span>
             </div>
         </div>
     {% endfor %}
