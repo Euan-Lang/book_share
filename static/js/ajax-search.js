@@ -27,7 +27,7 @@ $(document).ready(function() {
             data: {"username":username, "csrfmiddlewaretoken":csrftoken},
             success: function (response) {
                 var instances = response["instances"];
-                regenerate_items()
+                regenerate_items(instances)
             }
         })
     });
