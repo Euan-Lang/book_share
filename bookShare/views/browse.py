@@ -32,11 +32,11 @@ def browse(request):
         if available_only:
             results = results.filter(is_reserved__exact=False)
 
-        try:
+        if(postcode):
             location = getCoordsRequest(postcode)
             valid_postcode = True if location["status"] == "match" and location["match_type"] == "unit_postcode" else False
             print("Coords!", getCoordsRequest(postcode))
-        except:
+        else:
             valid_postcode = False
 
         # Sort results into correct order

@@ -45,6 +45,7 @@ def getCoordsRequest(userPostcode):
     url = "https://" + url
     print(url)
     response = requests.get(url)
+    print(response)
     response = response.json()
     return response
 
