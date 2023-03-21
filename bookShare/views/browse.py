@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from bookShare.models import Book
 from django.db.models import Q
+from django.http import JsonResponse
 
 def browse(request):
     context = {}
@@ -13,7 +14,7 @@ def browse(request):
         try:
             max_radius_query = int(request.POST["max_radius_query"])
         except ValueError:
-            max_radius_query = 1000
+            max_radius_query = 100_000_000 # Effectively infinity if no or incorrect input
         available_only = True if request.POST["available_only"] == "true" else False
         sort_order = request.POST["sort"]
         print(max_radius_query, available_only)
@@ -30,7 +31,7 @@ def browse(request):
         # Sort results into correct order
         results = sort_results(results, sort_order)
         context["results"] = results
-        return render(request,'bookShare/browse_results.html', context=context)
+        return JsonResponse({"results_container":render(request,'bookShare/browse_results.html', context=context).content.decode("utf-8"), "valid_postcode": True})
     else:
         return render(request,'bookShare/browse.html', context=context)
 
