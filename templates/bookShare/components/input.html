@@ -1,4 +1,4 @@
 <label class="block">
   <span class="block text-sm font-medium text-slate-700 {% if required %}after:content-['*'] after:ml-0.5 after:text-red-500{% endif %}">{{ label }}</span>
-  <input type={{ type }} {%if type == "File"%} accept="image/*"{%endif%}  name={{ name }} class="input" placeholder={{ placeholder|default:'' }} />
+  <input type={{ type }} {%if type == "File"%} accept="image/*"{%endif%}  name={{ name }} maxlength={{maxlength|default:128}} class="input" placeholder={{ placeholder|default:'' }} />
 </label>

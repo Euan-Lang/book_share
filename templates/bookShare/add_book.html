@@ -15,7 +15,7 @@
             {% include "bookShare/components/input.html" with type="text" name="title" label="Title" required=True placeholder="Harry Potter" %}
             {% include "bookShare/components/input.html" with type="text" name="publisher" label="Publisher" required=True placeholder="Bloomsbury" %}
             {% include "bookShare/components/input.html" with type="text" name="author" label="Author" required=True placeholder="JK,Rowling" %}
-            {% include "bookShare/components/input.html" with type="text" name="isbn" label="ISBN" required=True placeholder="9780747532743" %}
+            {% include "bookShare/components/input.html" with type="text" name="isbn" label="ISBN" required=True placeholder="9780747532743" maxlength=13 %}
             {% include "bookShare/components/input.html" with type="File" name="cover_image" label="Cover Image" required=False placeholder="" %}
             {% include "bookShare/components/input.html" with type="text" name="genre" label="Genre" required=True placeholder="Fantasy" %}
 
@@ -25,8 +25,13 @@
     {% if submitted %}
         {% if added %}
             <h3>Book added!</h3>
-        {% else %}
-            <h3>Error Book not added.</h3>
+        {% elif errors %}
+        <h3> Book not added! Errors: </h3>
+        <ul>
+            {% for error in errors %}
+                <li> Invalid {{error|upper}} </li>
+            {%endfor%}
+        </ul>
         {% endif %}
     {% endif %}
     {% include "bookShare/components/card_end.html" %}
