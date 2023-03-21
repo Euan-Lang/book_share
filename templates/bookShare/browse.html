@@ -13,7 +13,7 @@
 <section id = "search_box_wrapper">
     <div id = "search_box">
         <form id = "book_search_form" enctype = "multipart/form-data">
-            <input type = "submit" name = "submit" value = "Search">
+            <input class = "w-8 h-8 bg-contain search_submit" type = "submit" name = "submit" value = ""></input>
             <input type = "text" id = "general_query_field" name = "general_query">
         </form>
     </div>
@@ -23,33 +23,43 @@
         <h1>Filter Books</h1>
 
         <form id = "filter_search_form" enctype = "multipart/form-data">
-            <div id = "genre_box">
-                <h2> Genre <span id = "genre_box_indicator">&#9660</span></h2>
-                <input type = "text" id = "genre_query_field" name="genre_query">
+            <div class = "filter_box">
+                <h2> Genre <span class = "open_indicator">&#9660</span></h2>
+                <div class = "collapsible">
+                    <input type = "text" id = "genre_query_field" name="genre_query">
+                </div>
             </div>
 
-            <div id = "publisher_box">
-                <h2> Publisher <span id = "publisher_box_indicator">&#9660</span></h2>
-                <input type = "text" id = "publisher_query_field" name="publisher_query">
+            <div class = "filter_box">
+                <h2> Publisher <span class = "open_indicator">&#9660</span></h2>
+                <div class = "collapsible">
+                    <input type = "text" id = "publisher_query_field" name="publisher_query">
+                </div>
             </div>
 
-            <div id = "author_box">
-                <h2> Author <span id = "author_box_indicator">&#9660</span></h2>
-                <input type = "text" id = "author_query_field" name = "author_query">
+            <div class = "filter_box">
+                <h2> Author <span class = "open_indicator">&#9660</span></h2>
+                <div class = "collapsible">
+                    <input type = "text" id = "author_query_field" name = "author_query">
+                </div>
             </div>
 
-            <div id = "max_radius_box">
-                <h2> Maximum Distance <span id = "max_radius_box_indicator">&#9660</span></h2>
-                Your Postcode: <input type = "text" id = "postcode_field" name = "postcode" onkeyup="$(this).val($(this).val().toUpperCase())"><span id = "valid_postcode"></span><br/>
-                Distance <input type = "number" id = "max_radius_field" name = "max_radius" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode < 32">
+            <div class = "filter_box">
+                <h2> Maximum Distance <span class = "open_indicator">&#9660</span></h2>
+                <div class = "collapsible">
+                    Your Postcode: <input type = "text" id = "postcode_field" name = "postcode" onkeyup="$(this).val($(this).val().toUpperCase())"><span id = "valid_postcode"></span><br/>
+                    Distance <input type = "number" id = "max_radius_field" name = "max_radius" onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode < 32">
+                </div>
             </div>
 
-            <div id = "available_only_box">
-                <h2> Available Only <span id = "available_only_indicator">&#9660</span></h2>
-                <input type = "checkbox" id = "available_only_field" name = "available_only" value = "true">
+            <div class = "filter_box">
+                <h2> Available Only <span class = "open_indicator">&#9660</span></h2>
+                <div class = "collapsible">
+                    <input type = "checkbox" id = "available_only_field" name = "available_only" value = "true">
+                </div>
             </div>
 
-            <input type = "submit" name = "submit" value = "search">
+            <input class = "w-8 h-8 bg-contain search_submit" type = "submit" name = "submit" value = ""></input>
         </form>
     </div>
 

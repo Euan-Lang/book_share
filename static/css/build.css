@@ -890,6 +890,10 @@ footer {
   height: 2.5rem;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .h-\[90px\] {
   height: 90px;
 }
@@ -904,6 +908,10 @@ footer {
 
 .w-5\/12 {
   width: 41.666667%;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .w-full {
@@ -979,6 +987,10 @@ footer {
 .bg-slate-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+
+.bg-contain {
+  background-size: contain;
 }
 
 .p-11 {

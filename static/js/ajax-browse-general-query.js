@@ -2,8 +2,24 @@
 $(document).ready(function(e) {
     $('#book_search_form').on("submit", submitHandler);
     $('#filter_search_form').on("input", submitHandler);
+    $('#filter_search_form').on("submit", submitHandler);
     $('#sort_form').on("input", submitHandler);
     submitHandler(null); // Load in results initially
+
+    $('.filter_box .collapsible').css({'display':'none'});
+    $('.filter_box h2').on("click", function (e) {
+        if (this.contentsVisible) {
+            this.contentsVisible = false;
+            console.log(this);
+            $(this.parentNode).find('.collapsible').css({'display':'none'});
+            $(this.parentNode).find('.open_indicator').html("&#9660");
+            $(this.parentNode).find('input').val(""); // Reset input field when closed
+        } else {
+            this.contentsVisible = true;
+            $(this.parentNode).find('.collapsible').css({'display':'block'});
+            $(this.parentNode).find('.open_indicator').html("&#9650");
+        }
+    });
 });
 
 function submitHandler(e) {
@@ -17,14 +33,15 @@ function submitHandler(e) {
         data[fields[field]] = $("#"+fields[field]+"_field").val();
     }
     $("#valid_postcode").html("&#8634");
+    $(".search_submit").css({"background-image":"url('/static/images/loading.png')"});
     console.log(data);
     $.ajax( {
         type: 'POST',
         url: '/bookShare/browse/',
         data: data,
         success: function (response) {
-            $("#book_search_form")[0].reset(); // Clear input field on search
             $("#results_container").html(response["results_container"]);
+            $(".search_submit").css({"background-image":"url('/static/images/search.png')"});
             if (response["valid_postcode"]) {
                 $("#valid_postcode").html("&#10003");
             } else {
