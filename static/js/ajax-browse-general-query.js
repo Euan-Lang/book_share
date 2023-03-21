@@ -27,7 +27,7 @@ function submitHandler(e) {
             if (response["valid_postcode"]) {
                 $("#valid_postcode").html("&#10003");
             } else {
-                $("#valid_postcode").html("&#10060");
+                $("#valid_postcode").html("&#10007");
             }
         }
     });
