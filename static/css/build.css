@@ -1967,6 +1967,10 @@ main {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .lg\:gap-\[50px\] {
+    gap: 50px;
+  }
+
   .lg\:p-11 {
     padding: 2.75rem;
   }
