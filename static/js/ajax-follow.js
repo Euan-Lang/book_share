@@ -9,7 +9,7 @@ $(document).ready(function() {
             success: function (response) {
                 isFollowing = !isFollowing
                 $('#change-follow-button').text((isFollowing ? "Unfollow" : "Follow"))
-                $("#follower-count").text(`Followers: ${response["follow_count"]}`);
+                $("#follower-count").text(`${response["follow_count"]}`);
             }
         })
     });

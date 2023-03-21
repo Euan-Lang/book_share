@@ -10,7 +10,7 @@ from bookShare.map_calculations import getLatLon
 
 def browse(request):
     context = {}
-    print("ajax", request.is_ajax())
+    
     if request.method == "POST":
         # Read in data
         general_query = request.POST.get("general_query", "")
@@ -37,7 +37,6 @@ def browse(request):
             results = results.filter(is_reserved__exact=False)
         
         # Handle Postcode filtering
-        user_lat, user_lon = None, None
         if valid_postcode:
             ids = [book.book_id for book in results if book.user_profile.getDistance(lat, lon) <= max_radius]
             results = results.filter(book_id__in=ids)
@@ -45,6 +44,8 @@ def browse(request):
         # Sort results into correct order
         context["results"] = sort_results(results, sort_order, lat, lon)
         return JsonResponse({"results_container":render(request,'bookShare/browse_results.html', context=context).content.decode("utf-8"), "valid_postcode": valid_postcode})
+
+
     else:
         return render(request,'bookShare/browse.html', context=context)
 

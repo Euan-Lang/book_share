@@ -4,7 +4,7 @@
 
 {% block title %}Edit Profile{% endblock %}
 {% block content %}
-    {% include "bookShare/components/card_start.html" with card_title="Register" %}
+    {% include "bookShare/components/card_start.html" with card_title="Edit Profile" %}
 
     {% if user.is_authenticated and user.username == user_id %}
         <form id="user_form"

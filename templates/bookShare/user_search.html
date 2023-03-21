@@ -12,10 +12,20 @@
 {% block content %}
 <br/>
 
-<input type="text" id="user-search-input" name="search"><br>
+<div class="flex justify-center items-center w-full">
+    <div class="max-w-[800px] lg:w-auto shadow-lg rounded-xl p-11 my-5">
+        <h1 class="text-5xl font-semibold text-black mb-11 text-center">User Search</h1>
+        <input class="input" type="text" id="user-search-input" name="search" placeholder="Enter search term here..."><br>
 
-Results:<br/>
-<ul id = "results-container">
-    <li> Enter text to start searching! </li>
-</ul>
+{% include "bookShare/components/card_end.html" %}
+
+<div class="flex justify-center items-center w-full">
+    <div class="max-w-[800px] lg:w-auto shadow-lg rounded-xl p-11 my-5">
+        <div id = "results-container" class="grid grid-cols-3 lg:grid-cols-4 gap-[50px]">
+            No results found.
+        </div>
+{% include "bookShare/components/card_end.html" %}
+
+
+
 {% endblock %}

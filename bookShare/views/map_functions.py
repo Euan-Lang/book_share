@@ -38,4 +38,3 @@ def formatContextDict(response):
     context["centreLng"] = float(response["data"]["longitude"]) - centreDiff / 2
 
     return context
-

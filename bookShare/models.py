@@ -8,7 +8,7 @@ from bookShare.map_calculations import getLatLon, getDistance
 def rename_user(instance, file_name):
     extension = file_name.split('.')[-1]
     if instance.user.username:
-        file_name = '{}.{}'.format(instance.user.username, extension)
+        file_name = '{}.{}'.format(uuid4().hex, extension)
 
     return os.path.join('user/', file_name)
 
