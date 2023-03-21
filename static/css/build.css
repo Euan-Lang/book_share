@@ -1002,6 +1002,14 @@ footer {
   height: 150px;
 }
 
+.h-\[280px\] {
+  height: 280px;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
