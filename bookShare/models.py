@@ -3,8 +3,7 @@ from django.contrib.auth.models import User
 import os
 from uuid import uuid4
 from django.core.validators import FileExtensionValidator
-
-
+from bookShare.map_calculations import getLatLon, getDistance
 
 def rename_user(instance, file_name):
     extension = file_name.split('.')[-1]
@@ -24,12 +23,21 @@ def rename_book(instance, file_name):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=128)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
     post_code = models.CharField(max_length=7)
     phone_number = models.CharField(max_length=11, null = True, blank = True)
     joined_date = models.DateField(auto_now_add=True)
     reputation = models.IntegerField()
     user_image = models.ImageField(
         upload_to=rename_user, null=True, blank=True)
+    
+    def getDistance(self, lat, lon):
+        return getDistance(self.latitude, self.longitude, lat, lon)
+
+    def save(self, *args, **kwargs):
+        self.latitude, self.longitude = getLatLon(self.post_code)
+        super(UserProfile, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.user.username

@@ -10,13 +10,14 @@ function submitHandler(e) {
     if (e) {
         e.preventDefault();
     }
-    var fields = ["general_query","genre_query","publisher_query","author_query","max_radius_query","postcode","available_only","sort"]
+    var fields = ["general_query","genre_query","publisher_query","author_query","max_radius","postcode","available_only","sort"]
     
     var data = {"csrfmiddlewaretoken":csrftoken};
     for (var field in fields) {
         data[fields[field]] = $("#"+fields[field]+"_field").val();
     }
     $("#valid_postcode").html("&#8634");
+    console.log(data);
     $.ajax( {
         type: 'POST',
         url: '/bookShare/browse/',
