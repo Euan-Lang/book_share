@@ -6,20 +6,62 @@
 {% endblock %}
 
 {% block content %}
-<section id="search_box_wrapper">
-    <div id="search_box">
-        <form id="book_search_form" method="post" action="{% url 'bookShare:browse' %}" enctype="multipart/form-data">
+<section id = "search_box_wrapper">
+    <div id = "search_box">
+        <form id = "book_search_form" method = "post" action = "{% url 'bookShare:browse' %}" enctype = "multipart/form-data">
             {% csrf_token %}
-            <input type="submit" name="submit" value="Search">
-            <input type="text" id="query_text_field" name="query_text">
+            <input type = "submit" name = "submit" value = "Search">
+            <input type = "text" id = "general_query_field" name = "general_query">
         </form>
     </div>
 </section>
 <section id="main">
-    <div id="search_sidebar">
+    <div id = "search_sidebar">
+        <h1>Filter Books</h1>
+
+        <div id = "genre_box">
+            <h2> Genre <span id = "genre_box_indicator">&#9660</span></h2>
+            <input type = "text" id = "genre_query_field" name="genre_query">
+        </div>
+
+        <div id = "publisher_box">
+            <h2> Publisher <span id = "publisher_box_indicator">&#9660</span></h2>
+            <input type = "text" id = "publisher_query_field" name="publisher_query">
+        </div>
+
+        <div id = "author_box">
+            <h2> Author <span id = "author_box_indicator">&#9660</span></h2>
+            <input type = "text" id = "author_query_field" name = "author_query">
+        </div>
+
+        <div id = "radius_box">
+            <h2> Maximum Radius <span id = "radius_box_indicator">&#9660</span></h2>
+            <input type = "number" id = "radius_query_field" name = "radius_query">
+        </div>
+
+        <div id = "reserved_box">
+            <h2> Reserved Only <span id = "reserved_box_indicator">&#9660</span></h2>
+            <input type = "checkbox" id = "reserved_only_box" name = "reserved_only" value = "reserved_only">
+        </div>
 
     </div>
+
     <div id = "results_pane">
+         <div id = "sort_wrapper">
+            <form id = "sort_form" method="post" action = "{% url 'bookShare:browse' %}" enctype = "multipart/form-data">
+                <select name = "sort" id = "sort_field">
+                    <option value = "az">A - Z</option>
+                    <option value = "za">Z - A</option>
+                    <option value = "closest_first">Closest</option>
+                    <option value = "furthest_first">Furthest</option>
+                    <option value = "newest_first">Newest First</option>
+                    <option value = "oldest_first">Oldest First</option>
+                    <option value = "lowest_reputation_first">Lowest Reputation First</option>
+                    <option value = "highest_reputation_first">Highest Reputation First</option>
+                </select>
+            </form>
+        </div>
+        
         {% if results %}
             {% for result in results %}
                 <div class="book_result">
