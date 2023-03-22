@@ -22,7 +22,7 @@ class UserProfileForm(forms.ModelForm):
     location = forms.CharField(label="Location",
                                widget=forms.TextInput(attrs={"placeholder": "Exampleville", "maxlength": "128"}))
     post_code = forms.CharField(label="Post Code",
-                                widget=forms.TextInput(attrs={"placeholder": "XXXXXX", "maxlength": "7"}))
+                                widget=forms.TextInput(attrs={"placeholder": "XXXXXX", "maxlength": "8"}))
     phone_number = forms.CharField(label="Phone No.",
                                    widget=forms.TextInput(attrs={"placeholder": "01234567901", "maxlength": "11"}))
 
