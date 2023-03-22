@@ -1086,12 +1086,24 @@ footer {
   margin-top: 1.75rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
 
 .block {
   display: block;
+}
+
+.inline-block {
+  display: inline-block;
 }
 
 .inline {
@@ -1174,6 +1186,10 @@ footer {
   height: 100%;
 }
 
+.h-auto {
+  height: auto;
+}
+
 .max-h-0 {
   max-height: 0px;
 }
@@ -1216,6 +1232,10 @@ footer {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .max-w-\[650px\] {
@@ -1918,6 +1938,10 @@ main {
     margin-top: 3.5rem;
   }
 
+  .sm\:mt-7 {
+    margin-top: 1.75rem;
+  }
+
   .sm\:inline-block {
     display: inline-block;
   }
@@ -1932,6 +1956,10 @@ main {
 
   .sm\:h-\[200px\] {
     height: 200px;
+  }
+
+  .sm\:h-auto {
+    height: auto;
   }
 
   .sm\:max-h-none {
@@ -1952,6 +1980,10 @@ main {
 
   .sm\:w-\[200px\] {
     width: 200px;
+  }
+
+  .sm\:w-\[50\%\] {
+    width: 50%;
   }
 
   .sm\:grid-cols-3 {

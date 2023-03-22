@@ -2,9 +2,7 @@
 
 {% load staticfiles %}
 
-{% block title %}
-    {{ profile.user.username }}
-{% endblock %}
+{% block title %}{{ profile.user.username }}{% endblock %}
 {% block javascript %}
     <script>
     var isFollowing = {{is_following|lower}}
@@ -15,70 +13,50 @@
 {% block content %}
     {% include "bookShare/components/card_start.html" with card_title=profile.user.username %}
 
+    <div class="flex gap-10">
+        <img class="object-cover rounded-lg w-[50%]"
+             src="{% if profile.user_image %}{{ profile.user_image.url }}{% else %}{% static 'images/default_pfp.jpg' %}{% endif %}"/>
+        <div>
+            {% for key,attribute in profile_attributes.items %}
+                <div>
+                    <span class="text-xs">{{ attribute.label }}</span>
+                    <p class="text-lg font-semibold">{{ attribute.value }}</p>
+                </div>
+            {% endfor %}
+            {% if user.username == profile.user.username %}
+                <a class="btn-primary inline-block mt-4"
+                   href="{% url 'bookShare:edit_profile' user.username %}">Edit</a>
+            {% elif user.is_authenticated and is_following != "invalid" %}
+                <button class="btn-primary inline-block mt-4" id="change-follow-button">
+                    {% if is_following %}
+                        Unfollow
+                    {% else %}
+                        Follow
+                    {% endif %}
+                </button>
+            {% endif %}
+        </div>
+    </div>
     <div class="text-center sm:text-right flow-root flex flex-col gap-4 mb-6">
-        <img class="mb-4 sm:mb-0 ml-6 sm:ml-2 sm:mr-12 sm:inline-block block sm:float-left  w-[175px] h-[175px] sm:w-[200px] sm:h-[200px]"
-             src="{% if profile.user_image %}{{ profile.user_image.url }}{% else %}{% static 'images/default_pfp.jpg' %}{% endif %}">
-    </img>
-    <div class="sm:float-right sm:ml-4 sm:ml-0" id = "location">
-        <span class = "text-xs">Location</span>
-        <p class="text-lg sm:ml-4 ">
-            <b>{{ profile.location }}</b>
-        </p>
-    </div>
-    <br/>
-    <div class="sm:float-right sm:ml-4 sm:ml-0" id = "listings-posted">
-        <span class = "text-xs">Total Listings</span>
-        <br/>
-        <p class="text-lg sm:ml-4">
-            <b>{{ profile.reputation }}</b>
-        </p>
-    </div>
-    <br/>
-    <div class="sm:float-right sm:ml-4 sm:ml-0" id = "join-date">
-        <span class = "text-xs">Joined Date</span>
-        <br/>
-        <p class="text-base sm:ml-4">
-            <b>{{ profile.joined_date }}</b>
-        </p>
-    </div>
-    <br/>
-    <div class="float-left"
-         id="button"
-         class="sm:float-left block sm:ml-8 mt-5">
-        {% if user.username == profile.user.username %}
-            <a class="btn-primary ml-12 sm:ml-0 mb-6 text-center"
-               href="{% url 'bookShare:edit_profile' user.username %}"> Edit </a>
-        {% elif user.is_authenticated and is_following != "invalid" %}
-            <button class="btn-primary mb-6 text-center" id = "change-follow-button">
-                {% if is_following %}
-                    Unfollow
-                {% else %}
-                    Follow
-                {% endif %}
-            </button>
-        {% endif %}
-    </div>
-    <div class="text-center block float-left w-full mb-3" id = "lower-content">
-        <hr class = "mt-7 sm:mt-14 mb-3">
-        <div class="sm:ml-20 ml-4 block float-left" id = "following">
-            <span class = "text-xs">Following</span>
-            <br/>
-            <span class="text-3xl"><b><a id="following-count"
+        <div class="text-center block float-left w-full mb-3" id = "lower-content">
+            <hr class = "mt-7 mb-3">
+            <div class="sm:ml-20 ml-4 block float-left" id = "following">
+                <span class = "text-xs block">Following</span>
+                <span class="text-3xl"><b><a id="following-count"
    href="{% url 'bookShare:following' profile.user.username %}">{{ following|length }}</a> </b></span>
-        </div>
-        <div class = "block float-right mr-4 sm:mr-20" id = "followers">
-            <span class = "text-xs">Followers</span>
-            <br/>
-            <span class="text-3xl"><b><a id="follower-count"
+            </div>
+            <div class = "block float-right mr-4 sm:mr-20" id = "followers">
+                <span class = "text-xs block">Followers</span>
+                <span class="text-3xl"><b><a id="follower-count"
    href="{% url 'bookShare:followers' profile.user.username %}">{{ followers|length }}</a> </b></span>
+            </div>
+        </div>
+        <hr class = "w-full mb-7">
+        <div class="w-full h-full">
+            {% include "bookShare/components/map.html" %}
+
         </div>
     </div>
-    <hr class = "mt-14 w-full mb-8">
-    <div class="w-full h-full">
-        {% include "bookShare/components/map.html" %}
-
-    </div>
-</div>
-{% include "bookShare/components/card_end.html" %}
+    {% include "bookShare/components/card_end.html" %}
 
 {% endblock %}
