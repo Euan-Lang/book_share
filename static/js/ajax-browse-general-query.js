@@ -29,25 +29,25 @@ function submitHandler(e) {
     "sort",
   ];
 
-  var checkboxFields = [
-    "genres",
-    "publishers",
-    "authors",
-  ]
+  var checkboxFields = ["genres", "publishers", "authors"];
 
   var data = { csrfmiddlewaretoken: csrftoken };
-  console.log($("#available_only_field").is(":checked"));
-
   fields.forEach((field) => {
     if (field == "available_only") {
       data[field] = $("#available_only_field").is(":checked");
-    }
-    else if (field == "following_only") {
+    } else if (field == "following_only") {
       data[field] = $("#following_only_field").is(":checked");
     } else if (field == "mine_only") {
       data[field] = $("#mine_only_field").is(":checked");
     } else if (field == "reserved_for_me_only") {
       data[field] = $("#reserved_for_me_only_field").is(":checked");
+    } else if (field == "postcode") {
+      // If postcode is empty, set to placeholder
+      if ($("#postcode_field").val() == "") {
+        data[field] = $("#postcode_field").attr("placeholder");
+      } else {
+        data[field] = $("#postcode_field").val();
+      }
     } else {
       data[field] = $("#" + field + "_field").val();
     }
@@ -55,17 +55,19 @@ function submitHandler(e) {
 
   var checkboxReturns = {};
   checkboxFields.forEach((field) => {
-    document.querySelectorAll("#"+field + "_dropdownCheckbox input").forEach((box) => {
-      if ((box).checked == true) {
-        if (!(field in checkboxReturns)) {
-          checkboxReturns[field] = []
+    document
+      .querySelectorAll("#" + field + "_dropdownCheckbox input")
+      .forEach((box) => {
+        if (box.checked == true) {
+          if (!(field in checkboxReturns)) {
+            checkboxReturns[field] = [];
+          }
+          checkboxReturns[field].push(box.value);
         }
-        checkboxReturns[field].push((box).value)
-      }
-    })
+      });
   });
 
-  data["checkbox_queries"] = JSON.stringify(checkboxReturns)
+  data["checkbox_queries"] = JSON.stringify(checkboxReturns);
 
   $("#valid_postcode").html("&#8634");
   $.ajax({
@@ -73,12 +75,17 @@ function submitHandler(e) {
     url: "/bookShare/browse/",
     data: data,
     success: function (response) {
-      // $("#book_search_form")[0].reset(); // Clear input field on search
       $("#results_container").html(response["results_container"]);
+      const postcodeInput = document.querySelector("#postcode_field");
+      const postcodeLabel = document.querySelector("#postcode_label");
       if (response["valid_postcode"]) {
-        $("#valid_postcode").html("&#10003");
+        postcodeInput.classList.remove("invalid");
+        postcodeInput.classList.add("valid");
+        postcodeLabel.textContent = "Postcode: (valid)";
       } else {
-        $("#valid_postcode").html("&#10007");
+        postcodeLabel.textContent = "Postcode: (invalid)";
+        postcodeInput.classList.remove("valid");
+        postcodeInput.classList.add("invalid");
       }
     },
   });
