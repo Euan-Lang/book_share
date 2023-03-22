@@ -3,21 +3,15 @@ import { debounce } from "./utils.js";
 $(document).ready(function (e) {
   $("#book_search_form").on("submit", submitHandler);
   $("#filter_search_form").on("input", debounce(submitHandler, 200));
-  $("#sort_form").on("input", debounce(submitHandler, 200));
+  $("#sort_form").on("input", submitHandler);
   submitHandler(null); // Load in results initially
 
   document.querySelectorAll(".dropdownCheckboxButton").forEach((dropdown) => {
-    dropdown.onclick = function (e) {
-      e.preventDefault();
-      const { dropdownType, dropdownClass } = e.target.dataset;
-      const dropdown = document.querySelector(
-        `#${dropdownType}_${dropdownClass}`
-      );
-      if (dropdown) {
-        dropdown.classList.toggle("hidden");
-      }
-    };
+    dropdown.onclick = dropDownClickHandler;
   });
+
+  window.onresize = debounce(resizeHandler);
+  resizeHandler(); // closes all dropdowns when window is resized to mobile size
 });
 
 function submitHandler(e) {
@@ -68,4 +62,29 @@ function searchAuthor(e, author) {
   $("#filter_search_form")[0].reset();
   $("#author_query_field").val(author);
   submitHandler(null);
+}
+
+function dropDownClickHandler(e) {
+  e.preventDefault();
+  const { dropdownType, dropdownClass } = e.target.dataset;
+  const dropdown = document.querySelector(`#${dropdownType}_${dropdownClass}`);
+  if (dropdown) {
+    dropdown.classList.toggle("hidden");
+  }
+}
+
+function resizeHandler() {
+  // closes all dropdowns when window is resized to mobile size
+  const screenWidth = window.screen.width;
+  if (screenWidth >= 768) {
+    return;
+  }
+  const dropdownBtns = document.querySelectorAll(".dropdownCheckboxButton");
+  dropdownBtns.forEach((dropdownBtn) => {
+    const { dropdownType, dropdownClass } = dropdownBtn.dataset;
+    const dropdown = document.querySelector(
+      `#${dropdownType}_${dropdownClass}`
+    );
+    dropdown.classList.add("hidden");
+  });
 }
