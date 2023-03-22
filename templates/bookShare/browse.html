@@ -9,7 +9,7 @@
 {% block content %}
     <div id="search_box_wrapper"
          class="flex w-full justify-center py-5 md:py-20">
-        {% include 'bookShare/components/search_bar.html' with label="Search" form_id="book_search_form" input_id="general_query_field" %}
+        {% include 'bookShare/components/search_bar.html' with show_button="True" label="Search" form_id="book_search_form" input_id="general_query_field" placeholder="Title, ISBN, Author, etc..." %}
 
     </div>
     <div class="flex gap-10 flex-col md:flex-row">
