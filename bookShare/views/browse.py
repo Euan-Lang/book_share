@@ -14,9 +14,7 @@ def browse(request):
     context = {}
     if request.method == "POST":
         general_query = request.POST["general_query"]
-        print(request.POST)
         checkbox_querys = json.loads(request.POST["checkbox_queries"])
-        print(checkbox_querys)
         try:
             max_radius = int(request.POST["max_radius_query"])
         except ValueError:
@@ -29,7 +27,6 @@ def browse(request):
         mine_only = True if request.POST["mine_only"] == "true" else False
         reserved_for_me_only = True if request.POST["reserved_for_me_only"] == "true" else False
         sort_order = request.POST["sort"]
-        print(max_radius, available_only)
 
         # Select all books which contain the general query in any field
         results = Book.objects.filter(Q(title__icontains=general_query) | Q(author__icontains=general_query) | Q(isbn__icontains=general_query) | Q(
