@@ -20,14 +20,20 @@ function submitHandler(e) {
   }
   var fields = [
     "general_query",
-    // "genre_query",
-    // "publisher_query",
-    // "author_query",
     "max_radius_query",
     "postcode",
     "available_only",
+    "following_only",
+    "mine_only",
+    "reserved_for_me_only",
     "sort",
   ];
+
+  var checkboxFields = [
+    "genres",
+    "publishers",
+    "authors",
+  ]
 
   var data = { csrfmiddlewaretoken: csrftoken };
   console.log($("#available_only_field").is(":checked"));
@@ -35,10 +41,32 @@ function submitHandler(e) {
   fields.forEach((field) => {
     if (field == "available_only") {
       data[field] = $("#available_only_field").is(":checked");
+    }
+    else if (field == "following_only") {
+      data[field] = $("#following_only_field").is(":checked");
+    } else if (field == "mine_only") {
+      data[field] = $("#mine_only_field").is(":checked");
+    } else if (field == "reserved_for_me_only") {
+      data[field] = $("#reserved_for_me_only_field").is(":checked");
     } else {
       data[field] = $("#" + field + "_field").val();
     }
   });
+
+  var checkboxReturns = {};
+  checkboxFields.forEach((field) => {
+    document.querySelectorAll("#"+field + "_dropdownCheckbox input").forEach((box) => {
+      if ((box).checked == true) {
+        if (!(field in checkboxReturns)) {
+          checkboxReturns[field] = []
+        }
+        checkboxReturns[field].push((box).value)
+      }
+    })
+  });
+
+  data["checkbox_queries"] = JSON.stringify(checkboxReturns)
+
   $("#valid_postcode").html("&#8634");
   $.ajax({
     type: "POST",

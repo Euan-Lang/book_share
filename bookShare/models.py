@@ -24,7 +24,7 @@ def rename_book(instance, file_name):
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     location = models.CharField(max_length=128)
-    post_code = models.CharField(max_length=7)
+    post_code = models.CharField(max_length=8)
     phone_number = models.CharField(max_length=11, null = True, blank = True)
     joined_date = models.DateField(auto_now_add=True)
     reputation = models.IntegerField()
