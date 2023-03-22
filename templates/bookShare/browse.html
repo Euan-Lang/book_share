@@ -5,6 +5,7 @@
 {% block title %}Browse{% endblock %}
 {% block javascript %}
     <script src = {% static 'js/ajax-browse-general-query.js' %} type="module"></script>
+    <script type = "module"> import { setupFilterSearch } from "{% static 'js/ajax-browse-general-query.js' %}"; window.setupFilterSearch = setupFilterSearch; </script>
 {% endblock %}
 {% block content %}
     <div id="search_box_wrapper"
