@@ -91,11 +91,31 @@ function submitHandler(e) {
   });
 }
 
-function searchAuthor(e, author) {
-  e.preventDefault();
+export function setupFilterSearch(checkbox_queries) {
+  // Collapse dropdowns
+  var checkboxFields = ["genres", "publishers", "authors"];
+  checkboxFields.forEach((field) => {
+    $("#"+field+"_dropdownCheckbox").addClass("hidden");
+  });
+
+  // Reset search forms
   $("#book_search_form")[0].reset();
   $("#filter_search_form")[0].reset();
-  $("#author_query_field").val(author);
+
+  // Check correct boxes to setup search
+  Object.keys(checkbox_queries).forEach((field) => {
+    if (checkbox_queries[field].length > 0) {
+      $("#"+field+"_dropdownCheckbox").removeClass("hidden");
+      checkbox_queries[field].forEach((box) => {
+        var checkbox = $("#"+field+"_dropdownCheckbox :input[value='"+box+"']")[0];
+        if (checkbox) {
+          checkbox.checked = true;
+        }
+      });
+    }
+  });
+
+  // Perform search
   submitHandler(null);
 }
 

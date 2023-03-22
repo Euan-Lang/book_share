@@ -1,6 +1,7 @@
 import requests
 import urllib.parse
 from bookShare.models import Book, UserProfile,User
+from bookShare.utils.map_calculations import getCoordsRequest
 
 #use this function to get the context dict
 def getCoordsContextDict(book_id):
@@ -39,11 +40,3 @@ def formatContextDict(response):
     context["centreLng"] = float(response["data"]["longitude"]) - centreDiff / 2
 
     return context
-
-def getCoordsRequest(userPostcode):
-    url = urllib.parse.quote("api.getthedata.com/postcode/" + userPostcode)
-    url = "https://" + url
-    response = requests.get(url)
-    response = response.json()
-    return response
-

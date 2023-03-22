@@ -18,8 +18,8 @@
                 <a class="block font-semibold text-xl mb-1"
                    href="{% url 'bookShare:book_info' result.book_id %}">{{ result.title }}</a>
                 {% comment %} <div class="flex justify-between w-full"></div> {% endcomment %}
-                <p class="text-gray-600">{{ result.author }}</p>
-                <span class="absolute top-[-12px] left-5 bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700">{{ result.genre }}</span>
+                <p class="text-gray-600 cursor-pointer" onclick="setupFilterSearch({'authors':['{{result.author}}']})">{{ result.author }}</p>
+                <span class="absolute top-[-12px] left-5 bg-slate-200 rounded-full px-3 py-1 text-sm font-semibold text-slate-700 cursor-pointer" onclick="setupFilterSearch({'genres':['{{result.genre}}']})">{{ result.genre }}</span>
             </div>
         </div>
     {% endfor %}
