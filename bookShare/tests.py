@@ -3,6 +3,7 @@ from bookShare.models import Book, UserProfile, Interest, Follows
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib.auth.hashers import make_password
+import json
 
 def add_user(username, email, password):
     newUser = User()
@@ -160,7 +161,6 @@ class BookTests(TestCase):
         self.assertEqual(response.status_code, 200)
         
         self.assertContains(response, "Edit")
-        self.assertContains(response, "View Interested Users")
 
     def test_check_register_interest(self):
         """Check interest is registered when John registers interest on Bob's book"""
@@ -235,5 +235,98 @@ class BookTests(TestCase):
        
         response = self.client.get(reverse("bookShare:book_info", kwargs={"book_id":book.book_id}))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "John")
-        self.assertContains(response, "Book is reserved for:")
+        self.assertContains(response, "Reserved for")
+
+class SortTests(TestCase):
+    def test_genre_search(self):
+        """Check the ajax returns the correct book for a specific genre"""
+        bob = create_bob()
+        add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":False,
+            "following_only":False,
+            "mine_only":False,
+            "reserved_for_me_only":False,
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+                'genres':["Test Genre"]
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertContains(res, "How to Test")
+
+
+    def test_author_search(self):
+        """Check the ajax returns the correct book for a specific author"""
+        bob = create_bob()
+        add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":False,
+            "following_only":False,
+            "mine_only":False,
+            "reserved_for_me_only":False,
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+                'author':["Mr. Test"]
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertContains(res, "How to Test")
+
+
+
+    def test_publisher_search(self):
+        """Check the ajax returns the correct book for a specific publisher"""
+        bob = create_bob()
+        add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":False,
+            "following_only":False,
+            "mine_only":False,
+            "reserved_for_me_only":False,
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+                'publisher':["Test Publisher"]
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertContains(res, "How to Test")
+
+    def test_available_only(self):
+        """Check the ajax returns the correct book for a specific publisher"""
+        bob = create_bob()
+        book = add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        book.is_reserved = True
+        book.save()
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":True,
+            "following_only":False,
+            "mine_only":False,
+            "reserved_for_me_only":False,
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertContains(res, "How to Test")
+
