@@ -13,7 +13,7 @@ def browse(request):
     context = {}
     if request.method == "POST":
         general_query = request.POST["general_query"]
-        checkbox_querys = json.loads(request.POST["checkbox_queries"])
+        checkbox_querys = json.loads(request.POST["checkbox_queries"]) if "checkbox_queries" in request.POST else {}
         try:
             max_radius = int(request.POST["max_radius_query"])
         except ValueError:
@@ -70,7 +70,7 @@ def browse(request):
             "authors": Book.objects.values_list("author").distinct(),
             "publishers": Book.objects.values_list("publisher").distinct(),
         }
-        if request.user.is_authenticated:
+        if request.user.is_authenticated and UserProfile.objects.filter(user=request.user).exists():
             context["user_postcode"] = UserProfile.objects.get(
                 user=request.user).post_code
         return render(request, 'bookShare/browse.html', context=context)

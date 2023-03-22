@@ -1,33 +1,19 @@
 {% extends 'bookShare/base.html' %}
+
 {% load staticfiles %}
 
-{% block title %}
-    {{display_name}}
-{% endblock %}
-
+{% block title %}{{ display_name }}{% endblock %}
 {% block content %}
-<br/>
+    <h1 class="text-5xl font-semibold text-black py-11 md:mb-10 text-center">{{ display_name }}</h1>
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[25px] lg:gap-[50px] md:mb-10 ">
+        {% for result in results %}
+            {% if result.user_image %}
+                {% include "bookShare/components/user_grid_item.html" with username=result.user.username image_url=result.user_image.url location=result.location %}
 
-<div class="flex justify-center items-center w-full">
-    <div class="max-w-[800px] lg:w-auto shadow-lg rounded-xl p-2 sm:p-5 lg:p-11 my-5">
-      <h1 class="text-5xl font-semibold text-black mb-11 text-center">{{ display_name}}</h1>
-  
+            {% else %}
+                {% include "bookShare/components/user_grid_item.html" with username=result.user.username image_url="none" location=result.location %}
 
-        {% if results %}<br/>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-[25px] lg:gap-[50px]">
-                {% for result in results %}
-                <div class="col-span-1">
-                    {%if result.user_image %}
-                    {% include "bookShare/components/user_grid_item.html" with username=result.user.username image_url=result.user_image.url%}
-                    {%else%}
-                    {% include "bookShare/components/user_grid_item.html" with username=result.user.username image_url="none"%}
-                    {%endif%}
-                </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            No users found.
-        {% endif %}
-
-{% include "bookShare/components/card_end.html" %}
+            {% endif %}
+        {% endfor %}
+    </div>
 {% endblock %}

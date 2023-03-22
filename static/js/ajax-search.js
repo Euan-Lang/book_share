@@ -8,16 +8,20 @@ function regenerate_items(instances) {
     var username = user.username;
     var image_url = user.image_url;
     $("#results-container").append(`
-        <div class="transition-colors transition-transform hover:bg-[rgb(51,121,252)] hover:translate-y-1 hover:text-white bg-white shadow-lg rounded-xl h-[150px] w-[120px] lg:h-[200px] lg:w-[160px]">
-            <a href="/bookShare/${username}/profile/">
-                <img class="bg-white rounded-xl w-full h-4/5" src='${
-                  image_url != "none"
-                    ? image_url
-                    : "/static/images/default_pfp.jpg"
-                }'>
-                <div class="text-center align-middle sm:text-lg mt-1"> <b>${username}</b> </div>
-            </a>
-        </div>`);
+    <div class="shadow-md rounded-lg ">
+    <a class="w-full block relative h-[250px] bg-gray-50 rounded-t-lg"
+    href="/bookShare/${username}/profile/">
+        <img class="absolute top-0 left-0 w-full h-full object-contain z-0"
+        src='${
+          image_url != "none" ? image_url : "/static/images/default_pfp.jpg"
+        }'/>
+    </a>
+    <div class="px-5 py-4 relative">
+        <a class="block font-semibold text-xl mb-1"
+           href="/bookShare/${username}/profile/">${username}</a>
+        <p class="text-gray-600">${user.location}</p>
+    </div>
+</div>`);
   });
 }
 
