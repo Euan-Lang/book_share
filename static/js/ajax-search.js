@@ -18,7 +18,7 @@ function regenerate_items(instances) {
     </a>
     <div class="px-5 py-4 relative">
         <a class="block font-semibold text-xl mb-1"
-           href="{% url 'bookShare:profile' username %}">${username}</a>
+           href="/bookShare/${username}/profile/">${username}</a>
         <p class="text-gray-600">${user.location}</p>
     </div>
 </div>`);
