@@ -978,10 +978,6 @@ footer {
   z-index: 0;
 }
 
-.col-span-1 {
-  grid-column: span 1 / span 1;
-}
-
 .float-right {
   float: right;
 }
@@ -1010,8 +1006,17 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.my-11 {
+  margin-top: 2.75rem;
+  margin-bottom: 2.75rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
+}
+
+.mb-10 {
+  margin-bottom: 2.5rem;
 }
 
 .mb-11 {
@@ -1026,10 +1031,6 @@ footer {
   margin-bottom: 0.75rem;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .mb-5 {
   margin-bottom: 1.25rem;
 }
@@ -1038,12 +1039,8 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-.mb-8 {
-  margin-bottom: 2rem;
-}
-
-.ml-12 {
-  margin-left: 3rem;
+.mb-7 {
+  margin-bottom: 1.75rem;
 }
 
 .ml-2 {
@@ -1058,10 +1055,6 @@ footer {
   margin-left: 1rem;
 }
 
-.ml-6 {
-  margin-left: 1.5rem;
-}
-
 .mr-4 {
   margin-right: 1rem;
 }
@@ -1074,24 +1067,12 @@ footer {
   margin-top: 2.5rem;
 }
 
-.mt-14 {
-  margin-top: 3.5rem;
-}
-
-.mt-5 {
-  margin-top: 1.25rem;
-}
-
-.mt-7 {
-  margin-top: 1.75rem;
-}
-
 .mt-4 {
   margin-top: 1rem;
 }
 
-.mb-7 {
-  margin-bottom: 1.75rem;
+.mt-7 {
+  margin-top: 1.75rem;
 }
 
 .box-border {
@@ -1146,10 +1127,6 @@ footer {
   height: 1rem;
 }
 
-.h-4\/5 {
-  height: 80%;
-}
-
 .h-5 {
   height: 1.25rem;
 }
@@ -1164,10 +1141,6 @@ footer {
 
 .h-\[150px\] {
   height: 150px;
-}
-
-.h-\[175px\] {
-  height: 175px;
 }
 
 .h-\[350px\] {
@@ -1186,8 +1159,24 @@ footer {
   height: 100%;
 }
 
+.h-\[200px\] {
+  height: 200px;
+}
+
 .h-auto {
   height: auto;
+}
+
+.h-\[300px\] {
+  height: 300px;
+}
+
+.h-\[2580px\] {
+  height: 2580px;
+}
+
+.h-\[250px\] {
+  height: 250px;
 }
 
 .max-h-0 {
@@ -1218,8 +1207,8 @@ footer {
   width: 120px;
 }
 
-.w-\[175px\] {
-  width: 175px;
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .w-\[500px\] {
@@ -1232,10 +1221,6 @@ footer {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[50\%\] {
-  width: 50%;
 }
 
 .max-w-\[650px\] {
@@ -1457,6 +1442,14 @@ footer {
   padding: 15px;
 }
 
+.p-5 {
+  padding: 1.25rem;
+}
+
+.p-7 {
+  padding: 1.75rem;
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -1515,6 +1508,16 @@ footer {
 .py-\[15px\] {
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+.py-11 {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .pb-10 {
@@ -1587,11 +1590,6 @@ footer {
 
 .text-\[18px\] {
   font-size: 18px;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .text-lg {
@@ -1890,40 +1888,8 @@ main {
 }
 
 @media (min-width: 640px) {
-  .sm\:float-right {
-    float: right;
-  }
-
-  .sm\:float-left {
-    float: left;
-  }
-
-  .sm\:mb-0 {
-    margin-bottom: 0px;
-  }
-
-  .sm\:ml-0 {
-    margin-left: 0px;
-  }
-
-  .sm\:ml-2 {
-    margin-left: 0.5rem;
-  }
-
   .sm\:ml-20 {
     margin-left: 5rem;
-  }
-
-  .sm\:ml-4 {
-    margin-left: 1rem;
-  }
-
-  .sm\:ml-8 {
-    margin-left: 2rem;
-  }
-
-  .sm\:mr-12 {
-    margin-right: 3rem;
   }
 
   .sm\:mr-20 {
@@ -1934,32 +1900,12 @@ main {
     margin-top: 0px;
   }
 
-  .sm\:mt-14 {
-    margin-top: 3.5rem;
-  }
-
-  .sm\:mt-7 {
-    margin-top: 1.75rem;
-  }
-
-  .sm\:inline-block {
-    display: inline-block;
-  }
-
   .sm\:table-cell {
     display: table-cell;
   }
 
   .sm\:hidden {
     display: none;
-  }
-
-  .sm\:h-\[200px\] {
-    height: 200px;
-  }
-
-  .sm\:h-auto {
-    height: auto;
   }
 
   .sm\:max-h-none {
@@ -1976,14 +1922,6 @@ main {
 
   .sm\:w-9\/12 {
     width: 75%;
-  }
-
-  .sm\:w-\[200px\] {
-    width: 200px;
-  }
-
-  .sm\:w-\[50\%\] {
-    width: 50%;
   }
 
   .sm\:grid-cols-3 {
@@ -2022,8 +1960,8 @@ main {
     padding: 0px;
   }
 
-  .sm\:p-5 {
-    padding: 1.25rem;
+  .sm\:p-11 {
+    padding: 2.75rem;
   }
 
   .sm\:pl-10 {
@@ -2085,6 +2023,10 @@ main {
 
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .md\:flex-row {
@@ -2154,6 +2096,10 @@ main {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .lg\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .lg\:gap-10 {
     gap: 2.5rem;
   }
@@ -2161,8 +2107,10 @@ main {
   .lg\:gap-\[50px\] {
     gap: 50px;
   }
+}
 
-  .lg\:p-11 {
-    padding: 2.75rem;
+@media (min-width: 1280px) {
+  .xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }

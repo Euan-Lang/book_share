@@ -7,19 +7,12 @@
     <script src = {% static 'js/ajax-search.js' %}></script>
 {% endblock %}
 {% block content %}
-    <br/>
-    <div class="flex justify-center items-center w-full">
-        <div class="max-w-[800px] lg:w-auto shadow-lg rounded-xl p-11 my-5">
-            <h1 class="text-5xl font-semibold text-black mb-11 text-center">User Search</h1>
-            {% include 'bookShare/components/search_bar.html' with label="Search" form_id="user_search_form" input_id="user-search-input" placeholder="Enter search term here..." %}
-            {% include "bookShare/components/card_end.html" %}
+    <div id="search_box_wrapper"
+         class="flex w-full justify-center py-5 md:py-20">
+        {% include 'bookShare/components/search_bar.html' with label="Search" form_id="user_search_form" input_id="user-search-input" placeholder="Search for user..." %}
 
-            <div class="flex justify-center items-center w-full">
-                <div class="max-w-[800px] lg:w-auto shadow-lg rounded-xl p-2 sm:p-5 lg:p-11 my-5">
-                    <div id="results-container"
-                         class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-[25px] lg:gap-[50px]">
-                        No results found.
-                    </div>
-                    {% include "bookShare/components/card_end.html" %}
-
-                {% endblock %}
+    </div>
+    <div id="results-container"
+         class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-[25px] lg:gap-[50px] mb-11">
+    </div>
+{% endblock %}

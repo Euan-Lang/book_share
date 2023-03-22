@@ -13,14 +13,14 @@
 {% block content %}
     {% include "bookShare/components/card_start.html" with card_title=profile.user.username %}
 
-    <div class="flex gap-10">
+    <div class="flex gap-5 sm:gap-10">
         <img class="object-cover rounded-lg w-[50%]"
              src="{% if profile.user_image %}{{ profile.user_image.url }}{% else %}{% static 'images/default_pfp.jpg' %}{% endif %}"/>
         <div>
             {% for key,attribute in profile_attributes.items %}
                 <div>
                     <span class="text-xs">{{ attribute.label }}</span>
-                    <p class="text-lg font-semibold">{{ attribute.value }}</p>
+                    <p class="text-md sm:text-lg font-semibold">{{ attribute.value }}</p>
                 </div>
             {% endfor %}
             {% if user.username == profile.user.username %}
