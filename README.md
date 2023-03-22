@@ -1,6 +1,6 @@
 # book-share
 ### Now Live
-  The site is now live at (https://euanlang28.pythonanywhere.com/bookShare/browse/)
+  The site is now live at [BookShare](https://euanlang28.pythonanywhere.com/bookShare/browse/).
 ### Setup
 
 To see any style-related changes in the browser, such as adding classes, writing stylesheet declarations, you will need to setup a **Tailwind** compile process. Please see details below.
