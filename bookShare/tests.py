@@ -246,10 +246,10 @@ class SortTests(TestCase):
             "general_query":"",
             "max_radius_query":"",
             "postcode":"",
-            "available_only":False,
-            "following_only":False,
-            "mine_only":False,
-            "reserved_for_me_only":False,
+            "available_only":"false",
+            "following_only":"false",
+            "mine_only":"false",
+            "reserved_for_me_only":"false",
             "sort":"az",
             "checkbox_queries":json.dumps({
                 'genres':["Test Genre"]
@@ -269,10 +269,10 @@ class SortTests(TestCase):
             "general_query":"",
             "max_radius_query":"",
             "postcode":"",
-            "available_only":False,
-            "following_only":False,
-            "mine_only":False,
-            "reserved_for_me_only":False,
+            "available_only":"false",
+            "following_only":"false",
+            "mine_only":"false",
+            "reserved_for_me_only":"false",
             "sort":"az",
             "checkbox_queries":json.dumps({
                 'author':["Mr. Test"]
@@ -293,10 +293,10 @@ class SortTests(TestCase):
             "general_query":"",
             "max_radius_query":"",
             "postcode":"",
-            "available_only":False,
-            "following_only":False,
-            "mine_only":False,
-            "reserved_for_me_only":False,
+            "available_only":"false",
+            "following_only":"false",
+            "mine_only":"false",
+            "reserved_for_me_only":"false",
             "sort":"az",
             "checkbox_queries":json.dumps({
                 'publisher':["Test Publisher"]
@@ -308,19 +308,44 @@ class SortTests(TestCase):
         self.assertContains(res, "How to Test")
 
     def test_available_only(self):
-        """Check the ajax returns the correct book for a specific publisher"""
+        """Check the ajax returns only available books"""
         bob = create_bob()
         book = add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
         book.is_reserved = True
+        book.reserved_user=create_dave()
         book.save()
         data = {
             "general_query":"",
             "max_radius_query":"",
             "postcode":"",
-            "available_only":True,
-            "following_only":False,
-            "mine_only":False,
-            "reserved_for_me_only":False,
+            "available_only":"true",
+            "following_only":"false",
+            "mine_only":"false",
+            "reserved_for_me_only":"false",
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertNotContains(res, "How to Test")
+
+    def test_my_listings_only(self):
+        """Check the ajax returns only books posted by the user"""
+        bob = create_bob()
+        book = add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        book.save()
+        self.client.login(username="Bob",password="testPassword")
+       
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":"false",
+            "following_only":"false",
+            "mine_only":"true",
+            "reserved_for_me_only":"false",
             "sort":"az",
             "checkbox_queries":json.dumps({
             }),
@@ -330,3 +355,54 @@ class SortTests(TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertContains(res, "How to Test")
 
+    def test_reserved_only(self):
+        """Check the ajax returns only books reserved for the user"""
+        bob = create_bob()
+        dave = create_dave()
+        book = add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        book.is_reserved = True
+        book.reserved_user = dave
+        book.save()
+        self.client.login(username="Dave",password="testPassword")
+       
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":"false",
+            "following_only":"false",
+            "mine_only":"false",
+            "reserved_for_me_only":"true",
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertContains(res, "How to Test")
+
+    def test_following_only(self):
+        """Check the ajax returns only books posted by users the user follows"""
+        bob = create_bob()
+        dave = create_dave()
+        add_book(bob, "How to Test", "Test Publisher", "Mr. Test", "Test Genre")
+        Follows(follower=dave, following=bob).save()
+        self.client.login(username="Dave",password="testPassword")
+       
+        data = {
+            "general_query":"",
+            "max_radius_query":"",
+            "postcode":"",
+            "available_only":"false",
+            "following_only":"true",
+            "mine_only":"false",
+            "reserved_for_me_only":"false",
+            "sort":"az",
+            "checkbox_queries":json.dumps({
+            }),
+            "csrfmiddlewaretoken":""
+        }
+        res = self.client.post(reverse("bookShare:browse"), data)
+        self.assertEqual(res.status_code, 200)
+        self.assertContains(res, "How to Test")

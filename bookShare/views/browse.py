@@ -55,9 +55,12 @@ def browse(request):
             results = results.filter(reserved_user__user=request.user)
         
         if valid_postcode:
-            ids = [book.book_id for book in results if book.user_profile.getDistance(
-                lat, lon) <= max_radius]
-            results = results.filter(book_id__in=ids)
+            try:
+                ids = [book.book_id for book in results if book.user_profile.getDistance(
+                    lat, lon) <= max_radius]
+                results = results.filter(book_id__in=ids)
+            except:
+                pass
 
         # Sort results into correct order
         context["results"] = sort_results(results, sort_order, lat, lon)
