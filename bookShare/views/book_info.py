@@ -10,8 +10,10 @@ def book_info(request, book_id):
         context = getCoordsContextDict(book_id)
     except:
         context = {"invalid_map": True}
-
-    book = Book.objects.get(book_id=book_id)
+    try:
+        book = Book.objects.get(book_id=book_id)
+    except:
+        return redirect(reverse("bookShare:browse"))
     context['book'] = book
     if book.is_reserved:
         context["interested_users"] = Interest.objects.filter(book_id=book_id).filter(
