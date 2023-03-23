@@ -1,6 +1,5 @@
 from django.db.models import Q
 from django.http import JsonResponse
-from django.db.models.functions import Sin, Cos, ACos
 from django.shortcuts import render
 import json
 
@@ -31,6 +30,8 @@ def browse(request):
         # Select all books which contain the general query in any field
         results = Book.objects.filter(Q(title__icontains=general_query) | Q(author__icontains=general_query) | Q(isbn__icontains=general_query) | Q(
             genre__icontains=general_query) | Q(book_id__icontains=general_query) | Q(user_profile__user__username__icontains=general_query))
+        
+        # Filter books
         if "authors" in checkbox_querys:
             results = results.filter(author__in=checkbox_querys["authors"])
         if "publishers" in checkbox_querys:
@@ -38,10 +39,7 @@ def browse(request):
                 publisher__in=checkbox_querys["publishers"])
         if "genres" in checkbox_querys:
             results = results.filter(genre__in=checkbox_querys["genres"])
-        # Filter to remove all books not containing the filter queries in their relevant fields
-        # results = results.filter(genre__icontains=genre_query)
-        # results = results.filter(publisher__icontains=publisher_query)
-        # results = results.filter(author__icontains=author_query)
+
         if available_only:
             results = results.filter(is_reserved__exact=False)
 
@@ -55,8 +53,7 @@ def browse(request):
 
         if reserved_for_me_only:
             results = results.filter(reserved_user__user=request.user)
-
-        # Handle Postcode filtering
+        
         if valid_postcode:
             try:
                 ids = [book.book_id for book in results if book.user_profile.getDistance(
@@ -66,8 +63,8 @@ def browse(request):
                 pass
 
         # Sort results into correct order
-        results = sort_results(results, sort_order, lat, lon)
-        context["results"] = results
+        context["results"] = sort_results(results, sort_order, lat, lon)
+        
         return JsonResponse({"results_container": render(request, 'bookShare/browse_results.html', context=context).content.decode("utf-8"), "valid_postcode": valid_postcode})
 
     else:
@@ -86,8 +83,6 @@ def sort_results(query_set, sort_order, user_lat, user_lon):
     orderings = {
         "az": "title",
         "za": "-title",
-        # "closest_first": pass,
-        # "furthest_first": ,
         "newest_first": "-upload_time",
         "oldest_first": "upload_time",
         "lowest_reputation_first": "user_profile__reputation",
