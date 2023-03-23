@@ -9,8 +9,11 @@ from bookShare.views.map_functions import *
 def profile(request, user_id):
     context = {}
 
-    user = User.objects.get(username=user_id)
-    user_profile = UserProfile.objects.get(user=user)
+    try:
+        user = User.objects.get(username=user_id)
+        user_profile = UserProfile.objects.get(user=user)
+    except:
+        return redirect(reverse("bookShare:browse"))
     try:
         context = formatContextDict(getCoordsRequest(user_profile.post_code))
     except:

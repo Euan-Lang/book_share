@@ -16,9 +16,9 @@ def user_login(request):
                 login(request, user)
                 return redirect(reverse('bookShare:browse'))
             else:
-                return HttpResponse("Your BookShare account is disabled.")
+                return render(request, 'bookShare/login.html', context={"error_msg":"Your BookShare account is disabled."})
         else:
             print(f"Invalid login details: {username}, {password}")
-            return HttpResponse("Invalid login details supplied.")
+            return render(request, 'bookShare/login.html', context={"error_msg":"Invalid login details supplied"})
     else:
         return render(request, 'bookShare/login.html')

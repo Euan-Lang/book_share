@@ -15,6 +15,11 @@
 
         </div>
         <input role="button" class="btn-primary mb-6" type="submit" name="submit" />
+
+        {% if error_msg %}
+            <br/>
+            <b> Login Failed! </b><br/> {{error_msg}} <br/><br/>
+        {% endif %}
     </form>
     <span class="inline">Don't have an account?</span>
     <a class="inline font-semibold text-blue hover:text-blue-900"
