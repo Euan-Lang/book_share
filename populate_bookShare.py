@@ -170,7 +170,7 @@ def populate():
          "publisher":"Whitcombe and Tombs Limited",
          "author":"C.A. Cotton",
          "isbn":"",
-         "title":"Geomorphology: An Introduction the the Study of Landforms",
+         "title":"Geomorphology: An Introduction to the Study of Landforms",
          "genre":"geography",
          "img_name":"IMG_20230316_220947.jpg"
         },
@@ -203,7 +203,7 @@ def populate():
          "author":"C.S. Lewis",
          "isbn":"",
          "title":"The Screwtape Letters",
-         "genre":"Theology",
+         "genre":"theology",
          "img_name":"IMG_20230323_102333.jpg"
         },
     ]
