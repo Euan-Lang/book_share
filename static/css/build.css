@@ -1030,17 +1030,8 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-.my-11 {
-  margin-top: 2.75rem;
-  margin-bottom: 2.75rem;
-}
-
 .mb-1 {
   margin-bottom: 0.25rem;
-}
-
-.mb-10 {
-  margin-bottom: 2.5rem;
 }
 
 .mb-11 {
@@ -1081,10 +1072,6 @@ footer {
 
 .mr-4 {
   margin-right: 1rem;
-}
-
-.mt-1 {
-  margin-top: 0.25rem;
 }
 
 .mt-10 {
@@ -1163,8 +1150,8 @@ footer {
   height: 100%;
 }
 
-.h-\[150px\] {
-  height: 150px;
+.h-\[250px\] {
+  height: 250px;
 }
 
 .h-\[350px\] {
@@ -1181,26 +1168,6 @@ footer {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[200px\] {
-  height: 200px;
-}
-
-.h-auto {
-  height: auto;
-}
-
-.h-\[300px\] {
-  height: 300px;
-}
-
-.h-\[2580px\] {
-  height: 2580px;
-}
-
-.h-\[250px\] {
-  height: 250px;
 }
 
 .max-h-0 {
@@ -1227,10 +1194,6 @@ footer {
   width: 1.25rem;
 }
 
-.w-\[120px\] {
-  width: 120px;
-}
-
 .w-\[50\%\] {
   width: 50%;
 }
@@ -1249,10 +1212,6 @@ footer {
 
 .max-w-\[650px\] {
   max-width: 650px;
-}
-
-.max-w-\[800px\] {
-  max-width: 800px;
 }
 
 .max-w-\[90\%\] {
@@ -1279,10 +1238,6 @@ footer {
 
 .grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
-}
-
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .flex-col {
@@ -1462,16 +1417,12 @@ footer {
   padding: 1rem;
 }
 
-.p-\[15px\] {
-  padding: 15px;
-}
-
-.p-5 {
-  padding: 1.25rem;
-}
-
 .p-7 {
   padding: 1.75rem;
+}
+
+.p-\[15px\] {
+  padding: 15px;
 }
 
 .px-3 {
@@ -1504,6 +1455,11 @@ footer {
   padding-bottom: 2.5rem;
 }
 
+.py-11 {
+  padding-top: 2.75rem;
+  padding-bottom: 2.75rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1519,6 +1475,11 @@ footer {
   padding-bottom: 0.75rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
@@ -1532,16 +1493,6 @@ footer {
 .py-\[15px\] {
   padding-top: 15px;
   padding-bottom: 15px;
-}
-
-.py-11 {
-  padding-top: 2.75rem;
-  padding-bottom: 2.75rem;
-}
-
-.py-4 {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
 }
 
 .pb-10 {
@@ -1693,6 +1644,16 @@ footer {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-gray-300 {
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
 .underline {
   text-decoration-line: underline;
 }
@@ -1721,18 +1682,6 @@ footer {
   --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.transition-colors {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.transition-transform {
-  transition-property: transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 
 main {
@@ -1816,16 +1765,6 @@ main {
   content: var(--tw-content);
 }
 
-.hover\:translate-y-1:hover {
-  --tw-translate-y: 0.25rem;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.hover\:bg-\[rgb\(51\2c 121\2c 252\)\]:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(51 121 252 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-blue-900:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(3 80 221 / var(--tw-bg-opacity));
@@ -1839,11 +1778,6 @@ main {
 .hover\:text-blue-900:hover {
   --tw-text-opacity: 1;
   color: rgb(3 80 221 / var(--tw-text-opacity));
-}
-
-.hover\:text-white:hover {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .focus\:border-blue-400:focus {
@@ -2049,10 +1983,6 @@ main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .md\:grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2096,20 +2026,8 @@ main {
 }
 
 @media (min-width: 1024px) {
-  .lg\:h-\[200px\] {
-    height: 200px;
-  }
-
-  .lg\:w-\[160px\] {
-    width: 160px;
-  }
-
   .lg\:w-\[500px\] {
     width: 500px;
-  }
-
-  .lg\:w-auto {
-    width: auto;
   }
 
   .lg\:grid-cols-3 {
@@ -2118,10 +2036,6 @@ main {
 
   .lg\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .lg\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .lg\:gap-10 {

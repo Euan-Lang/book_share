@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.http import JsonResponse
 from django.shortcuts import render
 import json
@@ -69,10 +69,11 @@ def browse(request):
 
     else:
         context["dropdowns"] = {
-            "genres": Book.objects.values_list("genre").distinct(),
-            "authors": Book.objects.values_list("author").distinct(),
-            "publishers": Book.objects.values_list("publisher").distinct(),
+            "genres": Book.objects.values_list("genre").annotate(total=Count("genre")),
+            "authors": Book.objects.values_list("author").annotate(total=Count("author")),
+            "publishers": Book.objects.values_list("publisher").annotate(total=Count("publisher")),
         }
+        print(context)
         if request.user.is_authenticated and UserProfile.objects.filter(user=request.user).exists():
             context["user_postcode"] = UserProfile.objects.get(
                 user=request.user).post_code

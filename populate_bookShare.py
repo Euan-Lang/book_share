@@ -111,6 +111,14 @@ def populate():
          "img_name":"IMG_20230316_210302.jpg"
         },
         {"user_name":"testuser2",
+         "publisher":"John Murray (Publishers)",
+         "author":"Randall Munroe",
+         "isbn":"9781473680340",
+         "title":"How To",
+         "genre":"comedy",
+         "img_name":"IMG_20230323_100641.jpg"
+        },
+        {"user_name":"testuser2",
          "publisher":"Quirk Books",
          "author":"Ian Doescher",
          "isbn":"9781594747151",
@@ -162,9 +170,41 @@ def populate():
          "publisher":"Whitcombe and Tombs Limited",
          "author":"C.A. Cotton",
          "isbn":"",
-         "title":"Geomorphology: An Introduction the the Study of Landforms",
+         "title":"Geomorphology: An Introduction to the Study of Landforms",
          "genre":"geography",
          "img_name":"IMG_20230316_220947.jpg"
+        },
+        {"user_name":"Jim",
+         "publisher":"HarperCollins",
+         "author":"J.R.R. Tolkien",
+         "isbn":"9780261102354",
+         "title":"The Lord of the Rings - The Fellowship of the Ring",
+         "genre":"fantasy",
+         "img_name":"IMG_20230323_100657.jpg"
+        },
+        {"user_name":"Andrew",
+         "publisher":"HarperCollins",
+         "author":"J.R.R. Tolkien",
+         "isbn":"9780261102361",
+         "title":"The Lord of the Rings - The Two Towers",
+         "genre":"fantasy",
+         "img_name":"IMG_20230323_100707.jpg"
+        },
+        {"user_name":"Lindsey",
+         "publisher":"HarperCollins",
+         "author":"J.R.R. Tolkien",
+         "isbn":"9780261102378",
+         "title":"The Lord of the Rings - The Return of the King",
+         "genre":"fantasy",
+         "img_name":"IMG_20230323_100805.jpg"
+        },
+        {"user_name":"Jim",
+         "publisher":"Geoffrey Bles",
+         "author":"C.S. Lewis",
+         "isbn":"",
+         "title":"The Screwtape Letters",
+         "genre":"theology",
+         "img_name":"IMG_20230323_102333.jpg"
         },
     ]
 
